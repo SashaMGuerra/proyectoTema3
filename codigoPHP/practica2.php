@@ -8,10 +8,14 @@
     <body>
         <?php
         $aquihaydoc = <<<DOCDOC
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit,<br>
-                    sed do eiusmod tempor incididunt ut labore et dolore magna<br>
-                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation<br>
-                            ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                CREATE TABLE shop (
+                article INT UNSIGNED  DEFAULT '0000' NOT NULL,
+                dealer  CHAR(20)      DEFAULT ''     NOT NULL,
+                price   DECIMAL(16,2) DEFAULT '0.00' NOT NULL,
+                PRIMARY KEY(article, dealer));
+                INSERT INTO shop VALUES
+                (1,'A',3.45),(1,'B',3.99),(2,'A',10.99),(3,'B',1.45),
+                (3,'C',1.69),(3,'D',1.25),(4,'D',19.95);
                 DOCDOC;
         echo $aquihaydoc;
         ?>

@@ -4,6 +4,11 @@
         <meta charset="UTF-8">
         <title>DWES - Ejercicio 1</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            strong{
+                color: red;
+            }
+        </style>
     </head>
     <body>
         <?php
