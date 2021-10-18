@@ -6,7 +6,7 @@ Fecha de creación: 18/10/2021
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>IMG - DWES 3 - 8</title>
+        <title>IMG - DWES 3 - 9</title>
         <style>
             span{
                 font-weight: bold;
@@ -19,12 +19,12 @@ Fecha de creación: 18/10/2021
          * Fecha de creación: 18/10/2021
          * Fecha de última modificación: 18/10/2021
          * 
-         * Mostrar dirección IP del equipo desde el que se accede.
+         * Mostrar el path donde se encuentra el archivo actual.
          */
         
-        $remoteAddr= $_SERVER['REMOTE_ADDR'];
+        $scriptName= $_SERVER['SCRIPT_FILENAME'];
 
-        echo "Se está accediendo desde <span>$remoteAddr</span>";
+        echo "El archivo en ejecución está en <span>$scriptName</span>";
         ?>
     </body>
 </html>
