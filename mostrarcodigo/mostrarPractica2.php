@@ -1,11 +1,19 @@
+<!--
+Autor: Isabel Martínez Guerra.
+Fecha de creación: 
+-->
 <html>
     <head>
-        <title>DAW2</title>
+        <title>IMG DWES mostrar 3.2</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <?php
+        /**
+         * Fecha de creación:
+         * Fecha de modificación:
+         */
             highlight_file("../codigoPHP/practica2.php");
         ?>
     </body>

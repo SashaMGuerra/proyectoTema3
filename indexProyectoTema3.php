@@ -39,8 +39,7 @@
                 </tr>
                 <tr>
                     <td>3. Mostrar en el index la fecha y hora actual en castellano.</td>
-                    <td><a href="codigoPHP/practica3.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a>
-                    <a href="codigoPHP/practica3.1.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
+                    <td><a href="codigoPHP/practica3.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
                     <td><a href="mostrarcodigo/mostrarPractica3.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
                 <tr>
@@ -52,6 +51,21 @@
                     <td>5. Inicializar y mostrar una variable que tiene una marca de tiempo (timestamp).</td>
                     <td><a href="codigoPHP/practica5.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
                     <td><a href="mostrarcodigo/mostrarPractica5.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
+                </tr>
+                <tr>
+                    <td>6. Operar con fechas: calcular la fecha y el día de la semana de dentro de 60 días.</td>
+                    <td><a href="codigoPHP/practica6.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
+                    <td><a href="mostrarcodigo/mostrarPractica6.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
+                </tr>
+                <tr>
+                    <td>7. Mostrar el nombre del fichero que se está ejecutando.</td>
+                    <td><a href="codigoPHP/practica7.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
+                    <td><a href="mostrarcodigo/mostrarPractica7.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
+                </tr>
+                <tr>
+                    <td>8. Mostrar la dirección IP del equipo desde el que estás accediendo</td>
+                    <td><a href="codigoPHP/practica8.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
+                    <td><a href="mostrarcodigo/mostrarPractica8.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
             </table>
         </main>

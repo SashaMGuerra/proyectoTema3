@@ -1,8 +1,12 @@
 <!DOCTYPE html>
+<!--
+Autor: Isabel Martínez Guerra.
+Fecha de creación: 
+-->
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>DWES - Ejercicio 1</title>
+        <title>IMG - DWES 3-1</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
             strong{
@@ -12,6 +16,13 @@
     </head>
     <body>
         <?php
+        /**
+         * Fecha de creación:
+         * Fecha de modificación: 18/10/2021.
+         * 
+         * Estudio de las diferencias entre las distintas funciones para
+         * imprimir por pantalla.
+         */
         $hilo = 'hola';
         $entero = 9;
         $flotante = 4.5;

@@ -1,12 +1,12 @@
+<!DOCTYPE html>
 <!--
 Autor: Isabel Martínez Guerra.
-Fecha de creación: 
+Fecha de creación: 18/10/2021
 -->
 <html>
     <head>
-        <title>IMG DWES mostrar 3.5</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>IMG DWES mostrar 3.7</title>
     </head>
     <body>
         <?php
@@ -14,8 +14,8 @@ Fecha de creación:
          * Fecha de creación: 18/10/2021
          * Fecha de modificación: 18/10/2021
          */
-            highlight_file("../codigoPHP/practica5.php");
+            highlight_file("../codigoPHP/practica7.php");
+        
         ?>
     </body>
 </html>
-

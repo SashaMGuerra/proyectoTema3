@@ -1,12 +1,22 @@
 <!DOCTYPE html>
+<!--
+Autor: Isabel Martínez Guerra.
+Fecha de creación: 
+-->
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>DWES - Ejercicio 2</title>
+        <title>IMG - DWES 3-2</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <?php
+        /**
+         * Fecha de creación:
+         * Fecha de modificación: 18/10/2021.
+         * 
+         * Uso de la variable heredoc.
+         */
         $aquihaydoc = <<<DOCDOC
                 CREATE TABLE shop (
                 article INT UNSIGNED  DEFAULT '0000' NOT NULL,
