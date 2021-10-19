@@ -78,14 +78,19 @@
                     <td><a href="mostrarcodigo/mostrarPractica10.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
                 <tr>
-                    <td class="porhacer">11. Mostrar el documento PHPDoc del proyecto que se está ejecutando generado con PHP Documentor o ApiGen.</td>
+                    <td class="noaun">11. Mostrar el documento PHPDoc del proyecto que se está ejecutando generado con PHP Documentor o ApiGen.</td>
                     <td><a href="codigoPHP/practica11.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
                     <td><a href="mostrarcodigo/mostrarPractica11.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
                 <tr>
-                    <td class="porhacer">12. Mostrar el contenido de las variables superglobales (utilizando print_r() y foreach()).</td>
+                    <td>12. Mostrar el contenido de las variables superglobales (utilizando print_r() y foreach()).</td>
                     <td><a href="codigoPHP/practica12.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
                     <td><a href="mostrarcodigo/mostrarPractica12.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
+                </tr>
+                <tr>
+                    <td class="porhacer">13.  Crear una función que cuente el número de visitas a la página actual desde una fecha concreta.</td>
+                    <td><a href="codigoPHP/practica13.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
+                    <td><a href="mostrarcodigo/mostrarPractica13.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
                 
             </table>

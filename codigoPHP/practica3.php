@@ -17,12 +17,21 @@ Fecha de creación:
          * 
          * Muestra de la fecha y hora en castellano.
          */
+        
+       
         //Cambiados idioma local y timezone.
-        setlocale(LC_ALL, 'es_ES');
-        date_default_timezone_set('Europe/Madrid');
-        //Meustra por pantalla.
+        $oFechaHora = new DateTime(null, new DateTimeZone('Europe/Madrid'));
+        
+        //Muestra por pantalla.
+        echo 'Hoy es '.$oFechaHora->format('l d/m/Y H:i:s').' en España.';
+        
+        /*
+         * Se descargan los locales con dpkg-reconfigure locales
         echo strftime('<div>Hoy es %A %d de %B de %Y.</div>');
         echo strftime('<div>Son las %T</div>');
+         * 
+         */
+        
         ?>
     </body>
 </html>

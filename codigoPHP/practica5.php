@@ -14,11 +14,14 @@ Fecha de creación: 18/10/2021
          * Fecha de creación: 18/10/2021.
          * Fecha de última modificación: 18/10/2021.
          * 
-         * Estudio del timestamp.
+         * Timestamp.
          */
         
-        $fecha = new DateTime('2001-09-11 08:51:37', new DateTimeZone('America/New_York'));
-        echo $fecha->format('U = d M Y H:i:s').', horario de Nueva York';
+        $timestamp = 1000212697;
+        $fecha = new DateTime(null, new DateTimeZone('America/New_York'));
+        $fecha ->setTimestamp($timestamp);
+        
+        echo 'El timestamp '.$timestamp.' fue '.$fecha->format('d M Y H:i:s').', horario de Nueva York.';
         
         ?>
     </body>
