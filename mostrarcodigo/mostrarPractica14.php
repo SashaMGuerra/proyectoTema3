@@ -7,6 +7,11 @@ Fecha de creación: 20/10/2021
     <head>
         <meta charset="UTF-8">
         <title>IMG DWES mostrar 3.14</title>
+        <style>
+            h1{
+                text-align: center;
+            }
+        </style>
     </head>
     <body>
         <?php
@@ -14,7 +19,13 @@ Fecha de creación: 20/10/2021
          * Fecha de creación: 20/10/2021
          * Fecha de modificación: 20/10/2021
          */
+        
+        echo '<div><h1>Página:</h1>';
+            highlight_file("../codigoPHP/practica14.php");
+            
+        echo '</div><div><h1>Librería:</h1>';
             highlight_file("../codigoPHP/practica14_libreria.php");
+        echo '</div>';
         ?>
     </body>
 </html>

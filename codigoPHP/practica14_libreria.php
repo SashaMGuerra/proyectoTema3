@@ -23,7 +23,7 @@ Fecha de creación: 20/10/2021
         /**
          * Comprueba si el número introducido es par o impar.
          * @param integer $iNum Número a comprobar.
-         * @return boolean True si es par, False si es impar.
+         * @return boolean true si es par, false si es impar.
          */
         function esPar($iNum){
             if($iNum%2==0){
@@ -38,7 +38,7 @@ Fecha de creación: 20/10/2021
         /**
          * Comprueba si un número es primo.
          * @param integer $iNum El número a comprobar si es primo.
-         * @return boolean True si es primo, False si no lo es.
+         * @return boolean true si es primo, false si no lo es.
          */
         function esPrimo($iNum){
             if($iNum<=1){
@@ -53,7 +53,7 @@ Fecha de creación: 20/10/2021
         }
         
         /**
-         * Crea un string con el factorial de un número (1 * 2 * ...).
+         * Crea un string con el factorial de un número.
          * @param integer $num El número a mostrar como multiplicación factorial.
          * @return string El string de la multiplicación factorial.
          */
@@ -62,7 +62,7 @@ Fecha de creación: 20/10/2021
             for ($iToMult = 1; $iToMult < $num; $iToMult++) {
                 $sMult .= $iToMult . ' * ';
             }
-            return $sMult . $num;
+            return "$num! = $sMult$num = ". calculate_factorial($num);
         }
 
         /**

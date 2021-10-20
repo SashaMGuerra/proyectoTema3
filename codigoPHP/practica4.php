@@ -18,7 +18,7 @@ Fecha de creación:
         <?php
         /**
          * Fecha de creación:
-         * Fecha de modificación: 18/10/2021.
+         * Fecha de modificación: 20/10/2021.
          * 
          * Muestra de la fecha y hora en Portugal y otros lugares.
          */

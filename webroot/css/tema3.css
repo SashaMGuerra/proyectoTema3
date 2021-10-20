@@ -41,3 +41,8 @@ td:first-child{
 .exe{
     width: 50px;
 }
+
+footer{
+    position: static;
+    margin-top: 2%;
+}

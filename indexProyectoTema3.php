@@ -3,7 +3,7 @@
         <title>DAW2</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="webroot/css/common.css" rel="stylesheet" type="text/css"/>
+        <<link href="webroot/css/common.css" rel="stylesheet" type="text/css"/>
         <link href="webroot/css/tema3.css" rel="stylesheet" type="text/css"/>
         <script src="webroot/js/script.js" type="text/javascript"></script>
     </head>
@@ -93,7 +93,7 @@
                     <td><a href="mostrarcodigo/mostrarPractica13.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
                 <tr>
-                    <td class="porhacer">14. Crear tu propia librería de funciones y estudiar la forma de usarla en el entorno de desarrollo y en el de explotación.</td>
+                    <td class="cambiar">14. Crear tu propia librería de funciones y estudiar la forma de usarla en el entorno de desarrollo y en el de explotación.</td>
                     <td><a href="codigoPHP/practica14.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
                     <td><a href="mostrarcodigo/mostrarPractica14.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
