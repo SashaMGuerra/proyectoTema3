@@ -23,22 +23,14 @@ Fecha de creación:
          * Muestra de la fecha y hora en Portugal y otros lugares.
          */
         
+        echo '<h1>Mediante la clase IntlDateFormatter</h1>';
+        
         $oFechaHora = new DateTime();
-        $oTimezone = new DateTimeZone('Europe/Lisbon');
-        $oFechaHora ->setTimezone($oTimezone);
-        echo $oFechaHora->format('l d/m/Y H:i:s').' en Portugal.';
         
-        echo '<br>';
         
-        $oTimezone = new DateTimeZone('Africa/Casablanca');
-        $oFechaHora ->setTimezone($oTimezone);
-        echo $oFechaHora->format('l d/m/Y H:i:s').' en Marruecos.';
         
-        echo '<br>';
         
-        $oTimezone = new DateTimeZone('America/Bogota');
-        $oFechaHora ->setTimezone($oTimezone);
-        echo $oFechaHora->format('l d/m/Y H:i:s').' en Colombia.';
+        //Portugal, Marruecos, Colombia, China
         
         ?>
     </body>

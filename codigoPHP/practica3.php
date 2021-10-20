@@ -23,14 +23,8 @@ Fecha de creación:
          * Fecha de creación:
          * Fecha de modificación: 20/10/2021.
          * 
-         * Prueba con la clase DateTime.
+         * Estudio de la clase DateTime.
          */
-        
-        //setlocale(LC_ALL, 'es_ES');
-                /* * Se descargan los locales con dpkg-reconfigure locales
-        echo strftime('<div>Hoy es %A %d de %B de %Y.</div>');
-        echo strftime('<div>Son las %T</div>');
-       
         /* Construcción de un objeto DateTime*/
         $oFechaHora = new DateTime(null, new DateTimeZone('Europe/Madrid'));
                 
@@ -51,7 +45,7 @@ Fecha de creación:
         
         // sub resta un intervalo de tiempo.
         $oFechaSub = new DateTime();
-        echo '<div>Hace 2 meses y media hora era '.$oFechaSub->sub(new DateInterval('P2M PT30M'))->format('jS F y h:i:sa').'..</div>';
+        echo '<div>Hace 2 meses y media hora era '.$oFechaSub->sub(new DateInterval('P2M PT30M'))->format('jS F y h:i:sa O').'.</div>';
         
         // diff devuelve un DateInterval entre dos fechas.
         $oFechaDiff = $oFechaHora->diff(new DateTime('2002-01-01'));
@@ -59,6 +53,14 @@ Fecha de creación:
         
         // Prueba con atributo estático de DateTime:
         echo "<div>En las cookies de HTTP, las fecha-horas tienen un formato establecido: ".$oFechaHora->format(DateTime::COOKIE)."</div>";
+        
+        /* createFromFormat es un método estático que crea un objeto DateTime
+         * dado un formato.
+         */
+        $sFechaRara = 'May - 15, 21';
+        $oFechaHoraFormateada = DateTime::createFromFormat('M - j, y', $sFechaRara);
+        echo "<div>Se ha introducido <span>$sFechaRara</span>: ".$oFechaHoraFormateada->format('d-g-Y').'</div>';
+        
         
         
         echo '<h1>Cambio de fecha</h1>';
@@ -79,31 +81,39 @@ Fecha de creación:
         $oFechaHora->setTimezone(new DateTimeZone('Pacific/Majuro'));
         echo "<div>El timestamp $sTimestamp fue ".$oFechaHora->format(DATE_RFC822).' en las islas Marshall, por lo que su zona horaria es '.$oFechaHora->getTimezone()->getName().'.</div>';
         
-        echo "<br><span style='color:red'>".$oFechaHora->format(DATE_RFC850).'</span>';
-        
         /*
          * setDate cambia el año, mes y día (no la hora).
          * setTime cambia la hora.
          */
         $oFechaHora->setDate(1999, 12, 31)->setTime(9, 9);
-        echo '<div>Se ha cambiado la fecha a '.$oFechaHora->format(DATE_RFC3339_EXTENDED).'</div>';
+        echo '<div>Se ha cambiado la fecha a '.$oFechaHora->format('dS.m.Y h:i P').'</div>';
         
         
-        echo '<br>';
-        /* createFromFormat es un método estático que crea un objeto DateTime
-         * dado un formato.
+        
+        
+        echo '<h1>Fecha-hora en otros idiomas</h1>';
+        
+        /**
+         * Se necesita instalar en el servidor la clase IntlDateFormatter
+         * mediante el comando apt-get install php7.4-intl
+         * Ni siquiera necesita que el servidor tenga instalado el idioma
+         * Dirección de la ayuda: https://www.php.net/manual/es/intl.installation.php
          */
-        $sFechaRara = 'May - 15, 21';
-        $oFechaHoraFormateada = DateTime::createFromFormat('M - j, y', $sFechaRara);
-        echo "<div>Se ha introducido <span>$sFechaRara</span>: ".$oFechaHoraFormateada->format('d-g-Y').'</div>';
+        $oFechaHoraGreenwich = new DateTime(null, new DateTimeZone('UTC'));
+        $oFormatter = new IntlDateFormatter('it_IT', IntlDateFormatter::FULL, IntlDateFormatter::FULL);
+        echo '<div>Full fecha-hora internacional en italiano: '.$oFormatter->format($oFechaHoraGreenwich).'</div>';
         
-        //Muestra por pantalla.
-        echo '<br>Ahora mismo es '.$oFechaHora->getTimestamp().' en timestamp';
-        echo '<br>En 20 días será '.$oFechaHora->add(new DateInterval('P20D'))->format('l d/m/Y');
+        /*
+         * Hay funciones de fecha/hora que no están dentro de la clase DateTime
+         * 
+         * Por ejemplo, si se quiere indicar un locale y sacar una fecha-hora
+         * en el idioma, se necesita que el idioma esté activado en el servidor
+         * y formatear la fecha-hora con strftime
+         */
         
-        
-        
-        
+        date_default_timezone_set('Europe/Madrid');
+        setlocale(LC_ALL, 'es_ES.utf8');
+        echo '<div>Fecha-hora actual con strftime en español: '.strftime('%A %d de %B de %Y, son las %T').'</div>';
         
         ?>
     </body>
