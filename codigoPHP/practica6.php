@@ -21,13 +21,12 @@ Fecha de creación: 18/10/2021
         $dateTimeNow = new DateTime();
         //$otroDateTime = date_create('9-9-2007 09:09:09', new DateTimeZone('Europe/Madrid'));
         
-        
         $format = 'l d-m-Y h:m:s';
         
         echo 'Ahora: '.$dateTimeNow->format('l d-m-Y h:m:s');
         
         //El constructor de DateInterval requiere la P inicial.
-        date_add($dateTimeNow, new DateInterval('P60D'));
+        $dateTimeNow->add(new DateInterval('P60D'));
         
         echo '<br>En 60 días: '.$dateTimeNow->format('l d-m-Y h:m:s');
         ?>

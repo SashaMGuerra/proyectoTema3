@@ -23,31 +23,18 @@ Fecha de creación: 19/10/2021
         <?php
         /**
          * Fecha de creación: 19/10/2021
-         * Fecha de última modificación: 19/10/2021
+         * Fecha de última modificación: 20/10/2021
          * 
          * Función que cuenta el número de visitas a la página desde una fecha
          */
         
-        function visitas(){
-            $archivo = 'visitas.txt'; //Archivo que contiene las visitas.
-            
-            //fopen = file open
-            $lectorArchivo = fopen($archivo, 'r'); //Para lectura (reader).
-            if($lectorArchivo){
-                $contador = fread($lectorArchivo, filesize($archivo)); //Lectura del archivo.
-                $contador++;
-                fclose($lectorArchivo);
-            }
-            
-            $lectorArchivo = fopen($archivo, 'w+'); //Para lectura y escritura (writer).
-            if($lectorArchivo){
-                fwrite($lectorArchivo, $contador);
-                fclose($lectorArchivo);
-            }            
-            return $contador;
-        }
+        $sArchivo = 'prueba.txt';
+        $oArchivoAbierto = fopen($sArchivo, 'x+');
+        fwrite($oArchivoAbierto, 'más');
+        $sRead = fread($oArchivoAbierto, filesize($sArchivo));
+        fclose($oArchivoAbierto);
         
-        echo visitas();
+        echo $sRead;
         ?>
     </body>
 </html>
