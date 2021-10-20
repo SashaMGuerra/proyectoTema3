@@ -58,7 +58,7 @@ Fecha de creación: 20/10/2021
          * @return string El string de la multiplicación factorial.
          */
         function show_factorial($num) {
-            $sMult;
+            $sMult = '';
             for ($iToMult = 1; $iToMult < $num; $iToMult++) {
                 $sMult .= $iToMult . ' * ';
             }

@@ -48,7 +48,7 @@
                     <td><a href="mostrarcodigo/mostrarPractica4.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
                 <tr>
-                    <td>5. Inicializar y mostrar una variable que tiene una marca de tiempo (timestamp).</td>
+                    <td class="cambiar">5. Inicializar y mostrar una variable que tiene una marca de tiempo (timestamp).</td>
                     <td><a href="codigoPHP/practica5.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
                     <td><a href="mostrarcodigo/mostrarPractica5.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
