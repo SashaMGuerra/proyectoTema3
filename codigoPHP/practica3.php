@@ -32,7 +32,6 @@ Fecha de creación:
         echo strftime('<div>Son las %T</div>');
        
         /* Construcción de un objeto DateTime*/
-        
         $oFechaHora = new DateTime(null, new DateTimeZone('Europe/Madrid'));
                 
         /* Uso de los métodos de la clase*/
@@ -42,39 +41,52 @@ Fecha de creación:
         echo '<div>Hoy es '.$oFechaHora->format('l d/m/Y H:i:s').' en España.</div>';
         echo '<div>Estamos en el día '.$oFechaHora->format('z').' del año '.$oFechaHora->format('Y').'.</div>';
         
-        // add suma un intervalo de tiempo.
-        echo '<div>Mañana será '.$oFechaHora->add(new DateInterval('P1D'))->format('jS F y').'.</div>';
+        /* add suma un intervalo de tiempo.
+         * Se tiene que crear un nuevo objeto DateTime porque si no modifica el
+         * que se ha usado hasta aquí.
+         */
+        $oFechaAdd = new DateTime();
+        echo '<div>Mañana será '.$oFechaAdd->add(new DateInterval('P1D'))->format('jS F y').'.</div>';
+        
         
         // sub resta un intervalo de tiempo.
-        echo '<div>Hace 2 meses y media hora era '.$oFechaHora->sub(new DateInterval('P2M1D PT30M'))->format('jS F y h:i:sa').'..</div>';
+        $oFechaSub = new DateTime();
+        echo '<div>Hace 2 meses y media hora era '.$oFechaSub->sub(new DateInterval('P2M PT30M'))->format('jS F y h:i:sa').'..</div>';
         
-        // diff devuelve un intervalo entre dos fechas.
-        $oFechaDiff = $oFechaHora->diff(new DateTime('1-1-2002'));
-        echo '<div>El euro comenzó a circular en España hace '.$oFechaDiff->format('%y años, %m y %d días').'.</div>';
+        // diff devuelve un DateInterval entre dos fechas.
+        $oFechaDiff = $oFechaHora->diff(new DateTime('2002-01-01'));
+        echo '<div>El euro comenzó a circular en España hace '.$oFechaDiff->format('%y años, %m meses y %d días (%a días)').'.</div>';
         
         // Prueba con atributo estático de DateTime:
-        echo "<div>En las cookies de HTTP, las fecha-horas tienen un formato establecido: ".$oFechaHora->format(DATE_COOKIE)."</div>";
+        echo "<div>En las cookies de HTTP, las fecha-horas tienen un formato establecido: ".$oFechaHora->format(DateTime::COOKIE)."</div>";
         
         
         echo '<h1>Cambio de fecha</h1>';
         
         // modify altera la marca temporal, dada una cadena de fecha y hora.
         $oFechaHora->modify('7-9-2007 12:37:41');
-        echo '<div>Se ha cambiado la fecha y hora a '.$oFechaHora->format(DateTime::RFC850).'</div>';
+        echo '<div>Se ha modificado la fecha y hora a '.$oFechaHora->format(DateTime::RFC850).'</div>';
+        
+        // getTimestamp devuelve la marca temporal de una fecha dada.
+        echo '<div>Su timestamp es '.$oFechaHora->getTimestamp().'.</div>';
         
         // setTimestamp altera la marca temporal, dada ésta.
         $sTimestamp = 1234567890;
         $oFechaHora->setTimestamp($sTimestamp);
-        echo "<div>El timestamp $sTimestamp fue ".$oFechaHora->format(DATE_RFC3339_EXTENDED).' en España.</div>';
+        echo "<div>El timestamp $sTimestamp fue ".$oFechaHora->format(DATE_RFC822).' en España.</div>';
         
         // setTimezone cambia el DateTimeZone, dado un objeto de esta clase.
         $oFechaHora->setTimezone(new DateTimeZone('Pacific/Majuro'));
-        echo "<div>El timestamp $sTimestamp fue ".$oFechaHora->format(DATE_RFC3339_EXTENDED).' en las islas Marshall.</div>';
+        echo "<div>El timestamp $sTimestamp fue ".$oFechaHora->format(DATE_RFC822).' en las islas Marshall, por lo que su zona horaria es '.$oFechaHora->getTimezone()->getName().'.</div>';
         
-        // setDate cambia el año, mes y día (no la hora).
-        // setTime cambia la hora.
+        echo "<br><span style='color:red'>".$oFechaHora->format(DATE_RFC850).'</span>';
+        
+        /*
+         * setDate cambia el año, mes y día (no la hora).
+         * setTime cambia la hora.
+         */
         $oFechaHora->setDate(1999, 12, 31)->setTime(9, 9);
-        echo '<div>Se ha cambiado la fecha a '.$oFechaHora->format(DateTime::RFC850).'</div>';
+        echo '<div>Se ha cambiado la fecha a '.$oFechaHora->format(DATE_RFC3339_EXTENDED).'</div>';
         
         
         echo '<br>';
@@ -88,6 +100,8 @@ Fecha de creación:
         //Muestra por pantalla.
         echo '<br>Ahora mismo es '.$oFechaHora->getTimestamp().' en timestamp';
         echo '<br>En 20 días será '.$oFechaHora->add(new DateInterval('P20D'))->format('l d/m/Y');
+        
+        
         
         
         
