@@ -6,7 +6,7 @@ Fecha de creación: 20/10/2021
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>IMG - DWES 3 - 13</title>
+        <title>IMG - DWES 3 - 14</title>
     </head>
     <body>
         <?php
@@ -14,8 +14,10 @@ Fecha de creación: 20/10/2021
          * Fecha de creación: 20/10/2021
          * Fecha de última modificación: 20/10/2021
          * 
-         * Librería de funciones personal.
+         * Librería de funciones personal: uso.
          */
+        
+        
         
         
         ?>
