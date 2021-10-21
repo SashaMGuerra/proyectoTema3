@@ -27,7 +27,9 @@ Fecha de creación: 21/10/2021
         echo '<li>Edad: '.$iAge.'</li>';
         echo '</ul>';
         
+        echo '<pre>';
         print_r($_REQUEST);
+        echo '</pre>';
         
         ?>
     </body>
