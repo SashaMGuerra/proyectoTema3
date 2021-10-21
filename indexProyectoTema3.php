@@ -79,8 +79,10 @@
                 </tr>
                 <tr>
                     <td class="noaun">11. Mostrar el documento PHPDoc del proyecto que se está ejecutando generado con PHP Documentor o ApiGen.</td>
-                    <td><a href="codigoPHP/practica11.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
-                    <td><a href="mostrarcodigo/mostrarPractica11.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
+                    <td><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></td>
+                    <td><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></td>
+                    <!-- <td><a href="codigoPHP/practica11.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a> </td>
+                    <td><a href="mostrarcodigo/mostrarPractica11.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td> --> 
                 </tr>
                 <tr>
                     <td>12. Mostrar el contenido de las variables superglobales (utilizando print_r() y foreach()).</td>
@@ -93,9 +95,19 @@
                     <td><a href="mostrarcodigo/mostrarPractica13.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
                 <tr>
-                    <td class="cambiar">14. Crear tu propia librería de funciones y estudiar la forma de usarla en el entorno de desarrollo y en el de explotación.</td>
+                    <td>14. Crear tu propia librería de funciones y estudiar la forma de usarla en el entorno de desarrollo y en el de explotación.</td>
                     <td><a href="codigoPHP/practica14.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
                     <td><a href="mostrarcodigo/mostrarPractica14.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
+                </tr>
+                <tr>
+                    <td class="cambiar">21. Formulario: recoger un cuestionario a y enviarlo a una página Tratamiento.php para que muestre las preguntas y las respuestas recogidas.</td>
+                    <td><a href="codigoPHP/practica21.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
+                    <td><a href="mostrarcodigo/mostrarPractica21.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
+                </tr>
+                <tr>
+                    <td class="porhacer">22. Formulario: recoger un cuestionario a y mostrar en la misma página las preguntas y las respuestas recogidas.</td>
+                    <td><a href="codigoPHP/practica22.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
+                    <td><a href="mostrarcodigo/mostrarPractica22.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
                 
             </table>

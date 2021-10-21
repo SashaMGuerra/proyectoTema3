@@ -16,7 +16,7 @@ Fecha de creación: 20/10/2021
          * 
          * Librería de funciones personal: uso.
          */
-        @include 'practica14_libreria.php';
+        @include '../core/practica14_libreria.php';
 
         $iNum = 6;
 
@@ -39,6 +39,10 @@ Fecha de creación: 20/10/2021
         /*Calcula y muestra el factorial del número*/
         echo '<div>'.show_factorial($iNum) .'</div>';
 
+        /*Comprueba y devuelve información sobre un fichero*/
+        $sFichero = '../doc/textopara14.txt';
+        $sInfoFichero = comprobarFile($sFichero);
+        echo $sInfoFichero;
         ?>
     </body>
 </html>
