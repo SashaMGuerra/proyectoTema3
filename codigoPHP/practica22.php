@@ -40,7 +40,7 @@ Fecha de creación: 21/10/2021
             /* Si se comprueba, el array está vacío*/
         
         ?>
-        <form method="post">
+        <form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
             <label for="name">Nombre: </label>
             <input type="text" id="name" name="name">
             <label for="edad">Edad: </label>

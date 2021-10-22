@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <!--
 Autor: Isabel Martínez Guerra
-Fecha de creación: 21/10/2021
+Fecha de creación: 22/10/2021
 -->
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>IMG - DWES 3 - 23</title>
+        <title>IMG - DWES 3 - 24</title>
     </head>
     <body>
         <?php
         /**
-         * Fecha de creación: 21/10/2021
+         * Fecha de creación: 22/10/2021
          * Fecha de última modificación: 22/10/2021
          * @version 1.0
          * @author Sasha
@@ -19,6 +19,8 @@ Fecha de creación: 21/10/2021
          * Formulario que muestra en la misma página las preguntas y respuestas
          * recogidas, y comprueba que los campos no estén vacíos o la información
          * sea errónea.
+         * Si se tiene que volver a rellenar el formulario pero hay campos
+         * correctos, no se necesitará volver a teclearlos.
          */
         
         /*
@@ -36,14 +38,20 @@ Fecha de creación: 21/10/2021
             /*
              * Registro de errores.
              */
-            //$aErrores = array();
+            $aErrores = array();
             
             //Recogida de los datos introducidos.
             $sName = $_REQUEST['name'];
             $sAge = $_REQUEST['age'];
 
+            
+            /*
+             * Comprobación de errores.
+             */
+            
             //Comprueba si se ha introducido un nombre.
-            if ($sName == '') {
+            if (empty($sName)) {
+                $_REQUEST['name'] = '';
                 $bEntradaOK = false;
             }
             
@@ -51,13 +59,9 @@ Fecha de creación: 21/10/2021
              * Comprueba si se han introducido datos en la edad.
              * Comprueba si el número de edad introducido es 0 o más.
              */
-            if($sAge==''){
+            if(empty($sAge) || intval($sAge)<0){
+                $_REQUEST['age'] = '';
                 $bEntradaOK = false;
-            }
-            else{
-                if (intval($iAge) < 0) {
-                    $bEntradaOK = false;
-                }
             }
             
         } else {
@@ -85,9 +89,9 @@ Fecha de creación: 21/10/2021
             ?>
             <form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
             <label for="name">Nombre: </label>
-            <input type="text" id="name" name="name">
+            <input type="text" id="name" name="name" value="<?php echo $_REQUEST['name'] ?>">
             <label for="edad">Edad: </label>
-            <input type="number" id="age" name="age">
+            <input type="number" id="age" name="age" value="<?php echo $_REQUEST['age'] ?>">
 
             <!--
             <ul>

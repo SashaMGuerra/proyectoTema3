@@ -28,10 +28,16 @@ Fecha de creación: 18/10/2021
          * Fecha de creación: 18/10/2021
          * Fecha de última modificación: 18/10/2021
          * 
-         * Mostrar el contenido de las variables superglobales.
+         * Mostrado del contenido de las variables superglobales.
          */
         
-        //$_SERVER
+        /*
+         * Se muestra el contenido de los arrays de variables globales.
+         * Guardan la información de forma clave => valor (asociativos).
+         */
+        
+        
+        //$_SERVER: información sobre el servidor.
         echo '<h1>Variable $_SERVER</h1>';
         echo '<h2>Mediante foreach (+ tabla)</h2>';
         echo '<table><tr><th>Clave</th><th>Valor</th></th>';
@@ -45,12 +51,16 @@ Fecha de creación: 18/10/2021
 
 
         echo '<h2>Mediante print_r (+ texto preformateado)</h2>';
+        // La etiqueta <pre> formatea el texto.
         echo '<pre>';
         print_r($_SERVER);
         echo '</pre>';
 
 
-        //$_REQUEST
+        /*
+         * $_REQUEST: información devuelta en formularios enviados.
+         * Contiene la información de $_POST, $_GET y $_COOKIES.
+         */
         echo '<h1>Variable $_REQUEST</h1>';
         echo '<h2>Mediante foreach (+ tabla)</h2>';
         echo '<table><tr><th>Clave</th><th>Valor</th></th>';
@@ -69,7 +79,7 @@ Fecha de creación: 18/10/2021
         echo '</pre>';
         
 
-        //$_FILES
+        //$_FILES: variables de subida de ficheros HTTP.
         echo '<h1>Variable $_FILES</h1>';
         echo '<h2>Mediante foreach (+ tabla)</h2>';
         echo '<table><tr><th>Clave</th><th>Valor</th></th>';
@@ -88,7 +98,7 @@ Fecha de creación: 18/10/2021
         echo '</pre>';
         
         
-        //$_ENV
+        //$_ENV: variables de entorno.
         echo '<h1>Variable $_ENV</h1>';
         echo '<h2>Mediante foreach (+ tabla)</h2>';
         echo '<table><tr><th>Clave</th><th>Valor</th></th>';
@@ -106,7 +116,7 @@ Fecha de creación: 18/10/2021
         print_r($_ENV);
         echo '</pre>';
         
-        //$_SESSION
+        //$_SESSION: variables de sesión.
         echo '<h1>Variable $_SESSION</h1>';
         echo '<h2>Mediante foreach (+ tabla)</h2>';
         echo '<table><tr><th>Clave</th><th>Valor</th></th>';
@@ -124,7 +134,9 @@ Fecha de creación: 18/10/2021
         print_r($_SESSION);
         echo '</pre>';
         
-        //$GLOBALS
+        /*
+         * $GLOBALS: array de arrays, Contiene todos los anteriores.
+         */
         echo '<h1>Variable $GLOBALS</h1>';
         echo '<h2>Mediante foreach (+ tabla)</h2>';
         echo '<table><tr><th>Clave</th><th>Valor</th></th>';

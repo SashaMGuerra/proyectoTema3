@@ -12,16 +12,27 @@ Fecha de creación: 18/10/2021
         <?php
         /**
          * Fecha de creación: 18/10/2021.
-         * Fecha de última modificación: 20/10/2021.
+         * Fecha de última modificación: 22/10/2021.
+         * @author Sasha
+         * @version 1.0
          * 
-         * Timestamp.
+         * Estudio del timestamp.
          */
         
-        $timestamp = 1000212697;
-        $fecha = new DateTime(null, new DateTimeZone('America/New_York'));
-        $fecha ->setTimestamp($timestamp);
+        $oDateTime = new DateTime('2007/07/07 15:15:15', new DateTimeZone('Africa/Addis_Ababa'));
         
-        echo 'El timestamp '.$timestamp.' fue '.$fecha->format('d M Y H:i:s').', horario de Nueva York.';
+        //Muestra por pantalla del timestamp del datetime.
+        echo "<div>El timestamp ".$oDateTime->getTimestamp()." fue ".$oDateTime->format(DATE_COOKIE).'</div>';
+        
+        //Dado un timestamp, lo transforma en un DateTime en una timezone concreta.
+        $iTimestamp = 1000212697;
+        $oDateTimestamp = new DateTime(null, new DateTimeZone('America/New_York'));
+        $oDateTimestamp->setTimestamp($iTimestamp);
+        echo "<div>El timestamp $iTimestamp fue ".$oDateTimestamp->format('d M Y H:i:s').', horario de Nueva York.</div>';
+        
+        //Cambiada la timezone, la hora mostrada cambia, pero no el timestamp.
+        $oDateTimestamp->setTimezone(new DateTimeZone('Europe/Madrid'));
+        echo "<div>El timestamp $iTimestamp fue ".$oDateTimestamp->format('d M Y H:i:s').', horario de España.</div>';
         
         ?>
     </body>

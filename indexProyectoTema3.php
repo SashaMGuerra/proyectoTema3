@@ -48,7 +48,7 @@
                     <td><a href="mostrarcodigo/mostrarPractica4.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
                 <tr>
-                    <td class="cambiar">5. Inicializar y mostrar una variable que tiene una marca de tiempo (timestamp).</td>
+                    <td>5. Inicializar y mostrar una variable que tiene una marca de tiempo (timestamp).</td>
                     <td><a href="codigoPHP/practica5.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
                     <td><a href="mostrarcodigo/mostrarPractica5.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
@@ -110,9 +110,14 @@
                     <td><a href="mostrarcodigo/mostrarPractica22.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
                 <tr>
-                    <td class="porhacer">23. Formulario: y mostrar en la misma página las preguntas y las respuestas recogidas; en el caso de que alguna respuesta esté vacía o errónea volverá a salir el formulario con el mensaje correspondiente.</td>
+                    <td class="cambiar">23. Formulario: y mostrar en la misma página las preguntas y las respuestas recogidas; en el caso de que alguna respuesta esté vacía o errónea volverá a salir el formulario con el mensaje correspondiente.</td>
                     <td><a href="codigoPHP/practica23.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
                     <td><a href="mostrarcodigo/mostrarPractica23.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
+                </tr>
+                <tr>
+                    <td class="cambiar">24. Formulario: y mostrar en la misma página las preguntas y las respuestas recogidas; en el caso de que alguna respuesta esté vacía o errónea volverá a salir el formulario con el mensaje correspondiente, pero las respuestas que habíamos tecleado correctamente aparecerán en el formulario y no tendremos que volver a teclearlas</td>
+                    <td><a href="codigoPHP/practica24.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
+                    <td><a href="mostrarcodigo/mostrarPractica24.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
                 
             </table>
