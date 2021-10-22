@@ -7,8 +7,13 @@ Fecha de creación: 21/10/2021
     <head>
         <meta charset="UTF-8">
         <title>IMG - DWES 3 - 21</title>
+        <link href="../webroot/css/forms.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <header>
+            <h1>Formulario del ejercicio 21</h1>
+            <h2>Enviado el formulario, mostrará el documento tratamiento.php rellenado</h2>
+        </header>
         <?php
         /**
          * Fecha de creación: 21/10/2021

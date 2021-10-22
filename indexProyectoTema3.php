@@ -5,7 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <<link href="webroot/css/common.css" rel="stylesheet" type="text/css"/>
         <link href="webroot/css/tema3.css" rel="stylesheet" type="text/css"/>
-        <script src="webroot/js/script.js" type="text/javascript"></script>
     </head>
     <body>
         <header>

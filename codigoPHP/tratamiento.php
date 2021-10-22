@@ -18,19 +18,20 @@ Fecha de creación: 21/10/2021
          * 
          * Formulario a Tratamiento.php
          */
-        
+        //Inicialización de variables con la información recibida..
         $sName = $_REQUEST['name'];
         $iAge = $_REQUEST['age'];
-        
+
+        //Mostrado del contenido de las variables.
         echo '<ul>';
-        echo '<li>Nombre: '.$sName.'</li>';
-        echo '<li>Edad: '.$iAge.'</li>';
+        echo '<li>Nombre: ' . $sName . '</li>';
+        echo '<li>Edad: ' . $iAge . '</li>';
         echo '</ul>';
-        
+
+        //Mostrado del contenido de la variable $_REQUEST formtateada.
         echo '<pre>';
         print_r($_REQUEST);
         echo '</pre>';
-        
         ?>
     </body>
 </html>

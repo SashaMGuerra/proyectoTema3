@@ -7,8 +7,13 @@ Fecha de creación: 21/10/2021
     <head>
         <meta charset="UTF-8">
         <title>IMG - DWES 3 - 22</title>
+        <link href="../webroot/css/forms.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <header>
+            <h1>Formulario del ejercicio 22</h1>
+            <h2>Enviado el formulario, mostrará la información con que se ha rellenado</h2>
+        </header>
         <?php
         /**
          * Fecha de creación: 21/10/2021
@@ -24,20 +29,22 @@ Fecha de creación: 21/10/2021
          * isset devuelve si una variable está definida.
          */
         if (isset($_REQUEST['submit'])) {
+            //Inicialización de variables con la información recibida.
             $sName = $_REQUEST['name'];
             $iAge = $_REQUEST['age'];
 
+            //Mostrado del contenido de las variables.
             echo '<ul>';
             echo '<li>Nombre: ' . $sName . '</li>';
             echo '<li>Edad: ' . $iAge . '</li>';
             echo '</ul>';
 
+            //Mostrado del contenido de la variable $_REQUEST formtateada.
             echo '<pre>';
             print_r($_REQUEST);
             echo '</pre>';
         }
         else{
-            /* Si se comprueba, el array está vacío*/
         
         ?>
         <form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
