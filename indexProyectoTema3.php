@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<!--
+    Autor: Isabel Martínez Guerra.
+    Fecha de última modificación: 24/10/2021.
+-->
 <html>
     <head>
         <title>DAW2</title>
@@ -97,6 +102,21 @@
                     <td>14. Crear tu propia librería de funciones y estudiar la forma de usarla en el entorno de desarrollo y en el de explotación.</td>
                     <td><a href="codigoPHP/practica14.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
                     <td><a href="mostrarcodigo/mostrarPractica14.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
+                </tr>
+                <tr>
+                    <td class="cambiar">15. Crear e inicializar un array con el sueldo percibido de lunes a domingo. Recorrer el array para calcular el sueldo percibido durante la semana.</td>
+                    <td><a href="codigoPHP/practica15.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
+                    <td><a href="mostrarcodigo/mostrarPractica15.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
+                </tr>
+                <tr>
+                    <td class="porhacer">16. Recorrer el array anterior utilizando funciones para obtener el mismo resultado.</td>
+                    <td><a href="codigoPHP/practica16.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
+                    <td><a href="mostrarcodigo/mostrarPractica16.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
+                </tr>
+                <tr>
+                    <td>17. Inicializar un array bidimensional donde almacenamos el nombre de las personas que tienen reservado el asiento en un teatro de 20 filas y 15 asientos por fila. Recorrer el array con distintas técnicas.</td>
+                    <td><a href="codigoPHP/practica17.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
+                    <td><a href="mostrarcodigo/mostrarPractica17.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
                 <tr>
                     <td class="cambiar">21. Formulario: recoger un cuestionario a y enviarlo a una página Tratamiento.php para que muestre las preguntas y las respuestas recogidas.</td>
