@@ -37,7 +37,7 @@ Fecha de creación: 24/10/2021
         $aFilasAsientos = [
             ["", "Bor", "Bestla", "", "Frigga", "Odín", "", "", "", "", "", "Ra", "", "", ""],
             ["Buri", "", "", "Heimdall", "", "Balder", "Forseti", "Tyr", "", "", "", "", "", "", ""],
-            ["", "Sigyn", "Loki", "", "", "Thor", "Sif", "", "", "", "", "", "", "Atón", ""],
+            ["", "Sigyn", "Loki", "Hela", "", "Thor", "Sif", "", "", "", "", "", "", "Atón", ""],
             ["", "Býleistr", "Farbauti", "Helblindi", "", "Bragi", "Idunn", "", "", "", "", "", "", "", ""],
             ["", "", "", "", "", "", "", "", "Isis", "Osiris", "Horus", "Hathor", "", "", ""],
             ["", "", "", "Frey", "Freyja", "", "", "", "", "", "", "", "", "Amón", "Mut"],
