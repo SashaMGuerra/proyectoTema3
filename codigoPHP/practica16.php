@@ -29,14 +29,11 @@ Fecha de creación: 24/10/2021
             "domingo" => 60.25
         ];
 
-        /*
-         * Recorrido del array, recogiendo únicamente los valores y no las claves
-         * en un acumulador.
-         */
-        $fTotalSueldo = 0;
-        foreach ($aSueldo as $fSueldoDia) {
-            $fTotalSueldo+=$fSueldoDia;
+        // Recorrido del array mediante funciones.
+        while(is_null(next($aSueldo))){
+            
         }
+        
         
         ?>
     </body>

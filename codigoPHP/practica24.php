@@ -17,7 +17,7 @@ Fecha de creación: 22/10/2021
         <?php
         /**
          * Fecha de creación: 22/10/2021
-         * Fecha de última modificación: 22/10/2021
+         * Fecha de última modificación: 25/10/2021
          * @version 1.0
          * @author Sasha
          * 
@@ -27,6 +27,8 @@ Fecha de creación: 22/10/2021
          * Si se tiene que volver a rellenar el formulario pero hay campos
          * correctos, no se necesitará volver a teclearlos.
          */
+        
+        include '../core/210322ValidacionFormularios.php'; //Librería de validación.
         
         /*
          * Si el formulario no ha sido enviado devuelve el formulario.
@@ -43,45 +45,57 @@ Fecha de creación: 22/10/2021
             /*
              * Registro de errores.
              */
-            $aErrores = array();
+            $aErrores = [];
             
             //Recogida de los datos introducidos.
             $sName = $_REQUEST['name'];
-            $sAge = $_REQUEST['age'];
+            $iAge = intval($_REQUEST['age']);
 
-            
             /*
-             * Comprobación de errores.
+             * Validación de los campos.
              */
             
-            //Comprueba si se ha introducido un nombre.
-            if (empty($sName)) {
-                $_REQUEST['name'] = '';
+            /*
+             * Validación del nombre. 
+             * Debe tener un tamaño máximo de 300 y mínimo de 3.
+             * Es un campo obligatorio.
+             * En caso de existir error, indica que la entrada es incorrecta,
+             * añade el error al array de errores y limpia el REQUEST.
+             */
+            if(validacionFormularios::comprobarAlfabetico($sName, 300, 3) != null){
                 $bEntradaOK = false;
+                $aErrores = array_push(validacionFormularios::comprobarAlfabetico($sName));
+                $_REQUEST['name'] = '';
             }
             
             /*
-             * Comprueba si se han introducido datos en la edad.
-             * Comprueba si el número de edad introducido es 0 o más.
+             * Validación de la edad.
+             * Debe ser un entero entre 0 y 120, ambos incluidos.
+             * Es un campo obligatorio.
+             * En caso de existir error, indica que la entrada es incorrecta,
+             * añade el error al array de errores y limpia el REQUEST.
              */
-            if(empty($sAge) || intval($sAge)<0){
-                $_REQUEST['age'] = '';
+            if(validacionFormularios::comprobarEntero($iAge, 120, 0, true) != null){
                 $bEntradaOK = false;
+                $aErrores = array_push(validacionFormularios::comprobarEntero($iAge));
+                $_REQUEST['age'] = '';
             }
             
         } else {
             /* 
-             * Dado que el formulario aún no se ha enviaddo, la entrada todavía
+             * Dado que el formulario aún no se ha enviado, la entrada todavía
              * no está validada.
              */
             $bEntradaOK = false;
         }
 
+        
+        /*
+         * Si la entrada es correcta, muestra la información introducida.
+         * Si es incorrecta o todavía no se ha enviado, muestra de nuevo
+         * el formulario hasta que se introduzcan correctamente los datos.
+         */
         if ($bEntradaOK) {
-            //Inicialización de variables con la información recibida..
-            $sName = $_REQUEST['name'];
-            $iAge = $_REQUEST['age'];
-
             //Mostrado del contenido de las variables.
             echo '<ul>';
             echo '<li>Nombre: ' . $sName . '</li>';
@@ -105,22 +119,6 @@ Fecha de creación: 22/10/2021
             <label for="edad">Edad: </label>
             <input type="number" id="age" name="age" value="<?php echo $_REQUEST['age'] ?>">
 
-            <!--
-            <ul>
-                <li>
-                    <label for="male">Hombre</label>
-                    <input type="radio" id="male" name="sex">
-                </li>
-                <li>
-                    <label for="female">Mujer</label>
-                    <input type="radio" id="female" name="sex">
-
-                </li>
-            </ul>
-            <label for="birthday">Fecha de nacimiento: </label>
-            <input type="date" id="birthday" name="birthday">
-
-            -->
             <input type="submit" name="submit" value="Enviar">
         <?php
         }

@@ -17,7 +17,7 @@ Fecha de creación: 21/10/2021
         <?php
         /**
          * Fecha de creación: 21/10/2021
-         * Fecha de última modificación: 22/10/2021
+         * Fecha de última modificación: 25/10/2021
          * @version 1.0
          * @author Sasha
          * 
@@ -25,7 +25,11 @@ Fecha de creación: 21/10/2021
          * recogidas, y comprueba que los campos no estén vacíos o la información
          * sea errónea.
          */
-        
+        include '../core/210322ValidacionFormularios.php';  //Librería de validación.
+
+        define("OBLIGATORIO", 1);
+        define("OPCIONAL", 2);
+
         /*
          * Si el formulario no ha sido enviado devuelve el formulario.
          * Si el formulario ha sido enviado lo comprueba;
@@ -39,45 +43,50 @@ Fecha de creación: 21/10/2021
              */
             $bEntradaOK = true;
             /*
-             * Registro de errores.
+             * Registro de errores. Valida todos los campos.
              */
-            //$aErrores = array();
-            
-            //Recogida de los datos introducidos.
-            $sName = $_REQUEST['name'];
-            $sAge = $_REQUEST['age'];
-
-            //Comprueba si se ha introducido un nombre.
-            if ($sName == '') {
-                $bEntradaOK = false;
-            }
+            $aErrores = [
+                /*
+                 * El nombre debe tener un tamaño máximo de 300 y mínimo de 3.
+                 * Es un campo obligatorio.
+                 */
+                'name' => validacionFormularios::comprobarAlfabetico($_REQUEST['name'], 300, 3, OBLIGATORIO),
+                /*
+                 * La edad debe ser un entero entre 0 y 120, ambos incluidos.
+                 * Es un campo obligatorio.
+                 */
+                'age' => validacionFormularios::comprobarEntero($_REQUEST['age'], 120, 0, OBLIGATORIO)
+            ];
             
             /*
-             * Comprueba si se han introducido datos en la edad.
-             * Comprueba si el número de edad introducido es 0 o más.
+             * Recorrido del array de errores. Si existe alguno, indica que
+             * la entrada es incorrecta.
              */
-            if($sAge==''){
-                $bEntradaOK = false;
-            }
-            else{
-                if (intval($iAge) < 0) {
+            foreach ($aErrores as $sCampo => $mError) {
+                if($mError!=null){
                     $bEntradaOK = false;
+                    echo $mError;
                 }
             }
             
         } else {
-            /* 
+            /*
              * Dado que el formulario aún no se ha enviaddo, la entrada todavía
              * no está validada.
              */
             $bEntradaOK = false;
         }
 
+        /*
+         * Si la entrada es correcta, muestra la información introducida.
+         * Si es incorrecta, muestra de nuevo el formulario hasta que se
+         * introduzcan correctamente los datos.
+         */
         if ($bEntradaOK) {
-            //Inicialización de variables con la información recibida..
+            //Recogida de los datos introducidos.
             $sName = $_REQUEST['name'];
-            $iAge = $_REQUEST['age'];
-
+            $iAge = intval($_REQUEST['age']);
+            
             //Mostrado del contenido de las variables.
             echo '<ul>';
             echo '<li>Nombre: ' . $sName . '</li>';
@@ -89,38 +98,33 @@ Fecha de creación: 21/10/2021
             print_r($_REQUEST);
             echo '</pre>';
         } else {
-            /*
-             * Por cada input, el valor por defecto se inicializa al que
-             * tenga $_REQUEST, si es que tiene alguno.
-             */
-            
             ?>
             <form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
-            <label for="name">Nombre: </label>
-            <input type="text" id="name" name="name">
-            <label for="edad">Edad: </label>
-            <input type="number" id="age" name="age">
+                <label for="name">Nombre: </label>
+                <input type="text" id="name" name="name">
+                <label for="edad">Edad: </label>
+                <input type="number" id="age" name="age">
 
-            <!--
-            <ul>
-                <li>
-                    <label for="male">Hombre</label>
-                    <input type="radio" id="male" name="sex">
-                </li>
-                <li>
-                    <label for="female">Mujer</label>
-                    <input type="radio" id="female" name="sex">
+                <!--
+                <ul>
+                    <li>
+                        <label for="male">Hombre</label>
+                        <input type="radio" id="male" name="sex">
+                    </li>
+                    <li>
+                        <label for="female">Mujer</label>
+                        <input type="radio" id="female" name="sex">
 
-                </li>
-            </ul>
-            <label for="birthday">Fecha de nacimiento: </label>
-            <input type="date" id="birthday" name="birthday">
+                    </li>
+                </ul>
+                <label for="birthday">Fecha de nacimiento: </label>
+                <input type="date" id="birthday" name="birthday">
 
-            -->
-            <input type="submit" name="submit" value="Enviar">
-        <?php
-        }
-        ?>
+                -->
+                <input type="submit" name="submit" value="Enviar">
+                <?php
+            }
+            ?>
         </form>
     </body>
 </html>

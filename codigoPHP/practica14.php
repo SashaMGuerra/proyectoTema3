@@ -16,7 +16,7 @@ Fecha de creación: 20/10/2021
          * 
          * Librería de funciones personal: uso.
          */
-        @include '../core/practica14_libreria.php';
+        include '../core/practica14_libreria.php';
 
         $iNum = 6;
 

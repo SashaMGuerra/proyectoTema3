@@ -17,7 +17,6 @@ Fecha de creación: 24/10/2021
          * Inicialización y recorrido de un array con el sueldo de cada
          * día de la semana para mostrar el sueldo total.
          */
-        
         //Inicialización del array.
         $aSueldo = [
             "lunes" => 78.5,
@@ -35,9 +34,18 @@ Fecha de creación: 24/10/2021
          */
         $fTotalSueldo = 0;
         foreach ($aSueldo as $fSueldoDia) {
-            $fTotalSueldo+=$fSueldoDia;
+            $fTotalSueldo += $fSueldoDia;
         }
-        
+
+        /*
+         * Mostrado del contenido del array en una lista.
+         */
+        echo '<ul>';
+        foreach ($aSueldo as $sDia => $iSueldoDiario) {
+            echo "<li>El día $sDia se ha ganado $iSueldoDiario</li>";
+        }
+        echo '</ul>';
+
         echo '<h3>Texto formateado con printf</h3>';
         //Mostrado del sueldo total, dado un formato float con dos decimales.
         printf("<div>El total del sueldo semanal es de %01.2f €</div>", $fTotalSueldo);
