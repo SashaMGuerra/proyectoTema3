@@ -156,7 +156,7 @@ Fecha de creación: 22/10/2021
                             </tr>
                             <tr>
                                 <td><label class="obligatorio" for="height">Altura</label></td>
-                                <td><label class="obligatorio" for="sex">Sexo</label></td>
+                                <td><label class="obligatorio">Sexo</label></td>
                                 <td></td>
                             </tr>
                             <tr>
@@ -185,10 +185,10 @@ Fecha de creación: 22/10/2021
                         </table>
                     </fieldset>
                     <input type="submit" name="submit" value="Enviar">
+            </form>
                 <?php
                 }
                 ?>
-            </form>
         </main>
         <footer>
             <div>Modificado el 26/10/2021 - Mª Isabel Martínez Guerra</div>

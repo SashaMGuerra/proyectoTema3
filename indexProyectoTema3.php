@@ -114,7 +114,7 @@
                     <td><a href="mostrarcodigo/mostrarPractica16.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
                 <tr>
-                    <td class="cambiar">17. Inicializar un array bidimensional donde almacenamos el nombre de las personas que tienen reservado el asiento en un teatro de 20 filas y 15 asientos por fila. Recorrer el array con distintas técnicas.</td>
+                    <td>17. Inicializar un array bidimensional donde almacenamos el nombre de las personas que tienen reservado el asiento en un teatro de 20 filas y 15 asientos por fila. Recorrer el array con distintas técnicas.</td>
                     <td><a href="codigoPHP/practica17.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
                     <td><a href="mostrarcodigo/mostrarPractica17.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
@@ -134,17 +134,17 @@
                     <td><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></td>
                 </tr>
                 <tr>
-                    <td class="cambiar">21. Formulario: recoger un cuestionario a y enviarlo a una página Tratamiento.php para que muestre las preguntas y las respuestas recogidas.</td>
+                    <td>21. Formulario: recoger un cuestionario a y enviarlo a una página Tratamiento.php para que muestre las preguntas y las respuestas recogidas.</td>
                     <td><a href="codigoPHP/practica21.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
                     <td><a href="mostrarcodigo/mostrarPractica21.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
                 <tr>
-                    <td class="cambiar">22. Formulario: recoger un cuestionario a y mostrar en la misma página las preguntas y las respuestas recogidas.</td>
+                    <td>22. Formulario: recoger un cuestionario a y mostrar en la misma página las preguntas y las respuestas recogidas.</td>
                     <td><a href="codigoPHP/practica22.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
                     <td><a href="mostrarcodigo/mostrarPractica22.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
                 <tr>
-                    <td class="cambiar">23. Formulario: y mostrar en la misma página las preguntas y las respuestas recogidas; en el caso de que alguna respuesta esté vacía o errónea volverá a salir el formulario con el mensaje correspondiente.</td>
+                    <td>23. Formulario: y mostrar en la misma página las preguntas y las respuestas recogidas; en el caso de que alguna respuesta esté vacía o errónea volverá a salir el formulario con el mensaje correspondiente.</td>
                     <td><a href="codigoPHP/practica23.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
                     <td><a href="mostrarcodigo/mostrarPractica23.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>

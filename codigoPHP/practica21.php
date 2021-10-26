@@ -27,7 +27,7 @@ Fecha de creación: 21/10/2021
         <form action="tratamiento.php" method="post">
             <label for="name">Nombre: </label>
             <input type="text" id="name" name="name">
-            <label for="edad">Edad: </label>
+            <label for="age">Edad: </label>
             <input type="number" id="age" name="age">
             
             <!--

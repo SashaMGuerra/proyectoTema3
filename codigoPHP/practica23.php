@@ -100,7 +100,7 @@ Fecha de creación: 21/10/2021
             <form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
                 <label for="name">Nombre: </label>
                 <input type="text" id="name" name="name">
-                <label for="edad">Edad: </label>
+                <label for="age">Edad: </label>
                 <input type="number" id="age" name="age">
 
                 <!--
@@ -120,9 +120,10 @@ Fecha de creación: 21/10/2021
 
                 -->
                 <input type="submit" name="submit" value="Enviar">
+                
+        </form>
                 <?php
             }
             ?>
-        </form>
     </body>
 </html>

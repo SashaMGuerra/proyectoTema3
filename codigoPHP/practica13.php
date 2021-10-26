@@ -28,6 +28,11 @@ Fecha de creación: 19/10/2021
          * 
          * Función que cuenta el número de visitas a la página desde una fecha
          */
+        
+        /*
+         * Para poder trabajar con él, el directorio debe tener permisos
+         * de lectura y escritura
+         */
         $sFile = '../doc/prueba.txt';
 
         echo '<div>El archivo indicado ';
@@ -43,7 +48,7 @@ Fecha de creación: 19/10/2021
             
             //Comprueba si la dirección introducida es un directorio.
             echo '<br>'.(is_dir($sFile)?'es':'no es').' un directorio';
-            
+                    
             //Comprueba si es ejecutable.
             echo '<br>'. (is_executable($sFile)?'es':'no es').' ejecutable';
             
@@ -58,7 +63,6 @@ Fecha de creación: 19/10/2021
             
             //Comprueba si ha sido subido mediante HTTP POST
             echo '<br>y '. (is_uploaded_file($sFile)?'ha sido':'no ha sido').' subido mediante HTTP POST.';
-            
             
         } else {
             echo 'no existe.';
@@ -110,6 +114,12 @@ Fecha de creación: 19/10/2021
             echo "<p>$sFileString</p>";
 
             echo get_include_path();
+            
+            /*
+             * Escritura del archivo
+             */
+            file_put_contents($sFile, "venga otra línea");
+            
         } else {
             echo 'El fichero no existe';
         }
