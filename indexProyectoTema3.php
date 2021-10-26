@@ -109,12 +109,12 @@
                     <td><a href="mostrarcodigo/mostrarPractica15.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
                 <tr>
-                    <td class="cambiar">16. Recorrer el array anterior utilizando funciones para obtener el mismo resultado.</td>
+                    <td>16. Recorrer el array anterior utilizando funciones para obtener el mismo resultado.</td>
                     <td><a href="codigoPHP/practica16.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
                     <td><a href="mostrarcodigo/mostrarPractica16.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
                 <tr>
-                    <td>17. Inicializar un array bidimensional donde almacenamos el nombre de las personas que tienen reservado el asiento en un teatro de 20 filas y 15 asientos por fila. Recorrer el array con distintas técnicas.</td>
+                    <td class="cambiar">17. Inicializar un array bidimensional donde almacenamos el nombre de las personas que tienen reservado el asiento en un teatro de 20 filas y 15 asientos por fila. Recorrer el array con distintas técnicas.</td>
                     <td><a href="codigoPHP/practica17.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
                     <td><a href="mostrarcodigo/mostrarPractica17.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>

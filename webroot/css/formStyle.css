@@ -1,0 +1,23 @@
+/* 
+    Created on : 26 oct. 2021, 13:41:41
+    Author     : Sasha
+*/
+
+form{
+    margin: 0 10px;
+}
+legend{
+    font-size: small;
+}
+table{
+    margin: auto;
+    width: 100%;
+    table-layout: fixed;
+}
+span{
+    color: red;
+}
+.obligatorio:after{
+    content: "*";
+    color: red;
+}
