@@ -14,10 +14,27 @@ table{
     width: 100%;
     table-layout: fixed;
 }
+td, th{
+    vertical-align: sub;
+}
+tr{
+}
 span{
     color: red;
+    font-size: small;
+    
 }
-.obligatorio:after{
+
+label.obligatorio:after{
     content: "*";
     color: red;
+}
+
+ul.inputRadio{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+ul.inputRadio li input{
+    margin: 0 15px;
 }

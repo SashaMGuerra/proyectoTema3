@@ -272,6 +272,9 @@ class validacionFormularios {  //ELIMINA EL METODO VALIDATEDATE Y LO INCLUYE EN 
      * Si no es obligatorio, da por válido un campo vacío o un DNI, si lo es, será necesario introducir un DNI bien formateado
      * 
      * @author Mario Casquero Jañez
+     * @author Isabel Martínez Guerra
+     * @version 1.1 Añadida validación como válida del dni si la letra introducida
+     * es minúscula en lugar de mayúscula.
      * @param string $dni cadena a comprobar.
      * @param boolean $obligatorio Valor booleano indicado mediante 1, si es obligatorio o 0 si no lo es.
      * @return null|string Devuelve null si es correcto o un mensaje de error en caso de que lo haya.
@@ -284,7 +287,7 @@ class validacionFormularios {  //ELIMINA EL METODO VALIDATEDATE Y LO INCLUYE EN 
             $mensajeError = self::comprobarNoVacio($dni);
         }
         if(!is_numeric($letra) && is_numeric($numeros)){
-            if ((substr("TRWAGMYFPDXBNJZSQVHLCKE", $numeros % 23, 1) != $letra || strlen($letra) != 1 || strlen($numeros) != 8) && !empty($dni)) {
+            if (((substr("TRWAGMYFPDXBNJZSQVHLCKE", $numeros % 23, 1) != $letra && substr("trwagmyfpdxbnjzsqvhlcke", $numeros % 23, 1) != $letra) || strlen($letra) != 1 || strlen($numeros) != 8) && !empty($dni)) {
                 $mensajeError = " El DNI no es válido.";
             }
         }else{
@@ -481,6 +484,31 @@ class validacionFormularios {  //ELIMINA EL METODO VALIDATEDATE Y LO INCLUYE EN 
         }
         return $mensajeError; 
     }
+    
+    /**
+     * Función validarInputRadio
+     * 
+     * Comprueba si se ha seleccionado alguna de las opciones de un input radio.
+     * 
+     * @author Isabel Martínez Guerra
+     * @version 1.0 Creación de la función.
+     * @since 2021-10-26
+     * @param string $seleccion value del input que se va a comprobar.
+     * @param boolean $obligatorio Valor booleano indicado mediante 1, si es obligatorio,
+     * o 0 si no lo es.
+     * @return null|string Devuelve null si es correcto o un mensaje de error
+     * si no se ha seleccionado ninguna opción.
+     */
+    public static function validarInputRadio($seleccion, $obligatorio = 0){
+        $mensajeError = null;
+        if($obligatorio && !is_null(self::comprobarNoVacio($seleccion))){
+            $mensajeError = 'No se ha seleccionado ninguna opción';
+        }
+        return $mensajeError;
+    }
 }
+
+//Creada función validarInputRadio
+//Modificada función validarDNI
 
 ?>
