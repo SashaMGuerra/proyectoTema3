@@ -8,6 +8,11 @@ Fecha de creación: 22/10/2021
         <meta charset="UTF-8">
         <title>IMG - DWES 3 - 24</title>
         <link href="../webroot/css/forms.css" rel="stylesheet" type="text/css"/>
+        <style>
+            span{
+                color: red;
+            }
+        </style>
     </head>
     <body>
         <header>
@@ -30,11 +35,12 @@ Fecha de creación: 22/10/2021
         
         include '../core/210322ValidacionFormularios.php'; //Librería de validación.
         
+        //Definición de constantes para el parámetro Obligatorio.
+        define("OBLIGATORIO", 1);
+        define("OPCIONAL", 2);
+        
         /*
-         * Si el formulario no ha sido enviado devuelve el formulario.
-         * Si el formulario ha sido enviado lo comprueba;
-         * si está correcto muestra la información introducida,
-         * si está incorrecto muestra el formulario de nuevo.
+         * Compración si el formulario ha sido enviado.
          */
         if (isset($_REQUEST['submit'])) {
             /*
@@ -43,59 +49,41 @@ Fecha de creación: 22/10/2021
              */
             $bEntradaOK = true;
             /*
-             * Registro de errores.
+             * Registro de errores. Valida todos los campos.
              */
-            $aErrores = [];
-            
-            //Recogida de los datos introducidos.
-            $sName = $_REQUEST['name'];
-            $iAge = intval($_REQUEST['age']);
-
-            /*
-             * Validación de los campos.
-             */
+            $aErrores = [
+                'name' => validacionFormularios::comprobarAlfabetico($_REQUEST['name'], 300, 3, OBLIGATORIO),
+                'age' => validacionFormularios::comprobarEntero($_REQUEST['age'], 120, 0, OBLIGATORIO)
+            ];
             
             /*
-             * Validación del nombre. 
-             * Debe tener un tamaño máximo de 300 y mínimo de 3.
-             * Es un campo obligatorio.
-             * En caso de existir error, indica que la entrada es incorrecta,
-             * añade el error al array de errores y limpia el REQUEST.
+             * Recorrido del array de errores. Si existe alguno, indica que
+             * la entrada es incorrecta.
              */
-            if(validacionFormularios::comprobarAlfabetico($sName, 300, 3) != null){
-                $bEntradaOK = false;
-                $aErrores = array_push(validacionFormularios::comprobarAlfabetico($sName));
-                $_REQUEST['name'] = '';
-            }
-            
-            /*
-             * Validación de la edad.
-             * Debe ser un entero entre 0 y 120, ambos incluidos.
-             * Es un campo obligatorio.
-             * En caso de existir error, indica que la entrada es incorrecta,
-             * añade el error al array de errores y limpia el REQUEST.
-             */
-            if(validacionFormularios::comprobarEntero($iAge, 120, 0, true) != null){
-                $bEntradaOK = false;
-                $aErrores = array_push(validacionFormularios::comprobarEntero($iAge));
-                $_REQUEST['age'] = '';
+            foreach ($aErrores as $sCampo => $mError) {
+                if($mError!=null){
+                    $bEntradaOK = false;
+                }
             }
             
         } else {
-            /* 
-             * Dado que el formulario aún no se ha enviado, la entrada todavía
+            /*
+             * Dado que el formulario aún no se ha enviaddo, la entrada todavía
              * no está validada.
              */
             $bEntradaOK = false;
         }
 
-        
         /*
          * Si la entrada es correcta, muestra la información introducida.
-         * Si es incorrecta o todavía no se ha enviado, muestra de nuevo
-         * el formulario hasta que se introduzcan correctamente los datos.
+         * Si es incorrecta, muestra de nuevo el formulario hasta que se
+         * introduzcan correctamente los datos.
          */
         if ($bEntradaOK) {
+            //Recogida de los datos introducidos.
+            $sName = $_REQUEST['name'];
+            $iAge = intval($_REQUEST['age']);
+            
             //Mostrado del contenido de las variables.
             echo '<ul>';
             echo '<li>Nombre: ' . $sName . '</li>';
@@ -111,13 +99,16 @@ Fecha de creación: 22/10/2021
             /*
              * Por cada input, el valor por defecto se inicializa al que
              * tenga $_REQUEST, si es que tiene alguno.
+             * Si tiene algún error, lo muestra al lado del input.
              */
             ?>
             <form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
             <label for="name">Nombre: </label>
             <input type="text" id="name" name="name" value="<?php echo $_REQUEST['name'] ?>">
+            <?php echo '<span>'.$aErrores['name'].'</span>' ?>
             <label for="edad">Edad: </label>
             <input type="number" id="age" name="age" value="<?php echo $_REQUEST['age'] ?>">
+            <?php echo '<span>'.$aErrores['age'].'</span>' ?>
 
             <input type="submit" name="submit" value="Enviar">
         <?php

@@ -17,7 +17,7 @@ Fecha de creación: 21/10/2021
         <?php
         /**
          * Fecha de creación: 21/10/2021
-         * Fecha de última modificación: 25/10/2021
+         * Fecha de última modificación: 26/10/2021
          * @version 1.0
          * @author Sasha
          * 
@@ -27,14 +27,12 @@ Fecha de creación: 21/10/2021
          */
         include '../core/210322ValidacionFormularios.php';  //Librería de validación.
 
+        //Definición de constantes para el parámetro Obligatorio.
         define("OBLIGATORIO", 1);
         define("OPCIONAL", 2);
 
         /*
-         * Si el formulario no ha sido enviado devuelve el formulario.
-         * Si el formulario ha sido enviado lo comprueba;
-         * si está correcto muestra la información introducida,
-         * si está incorrecto muestra el formulario de nuevo.
+         * Compración si el formulario ha sido enviado.
          */
         if (isset($_REQUEST['submit'])) {
             /*

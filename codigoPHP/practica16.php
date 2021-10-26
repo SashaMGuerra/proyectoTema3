@@ -12,10 +12,10 @@ Fecha de creación: 24/10/2021
         <?php
         /**
          * Fecha de creación: 24/10/2021
-         * Fecha de última modificación: 24/10/2021
+         * Fecha de última modificación: 26/10/2021
          * 
-         * Inicialización y recorrido de un array con el sueldo de cada
-         * día de la semana para mostrar el sueldo total.
+         * Inicialización y recorrido con funciones de un array con el sueldo de
+         * cada día de la semana para mostrar el sueldo total.
          */
         
         //Inicialización del array.
@@ -29,10 +29,42 @@ Fecha de creación: 24/10/2021
             "domingo" => 60.25
         ];
 
-        // Recorrido del array mediante funciones.
-        while(is_null(next($aSueldo))){
-            
+        /*
+         * Recorrido del array mediante funciones.
+         */
+        echo '<h1>Recorrido del array</h1>';
+        //Avance del puntero mediante bucle. Cuando apunta a una posición vacía, sale.
+        while(current($aSueldo)){
+            //Mostrado de la clave y el elemento en la posición actual.
+            echo "<div>En ".key($aSueldo)." el sueldo es de ".current($aSueldo),"</div>";
+            //Avance del puntero.
+            next($aSueldo);
         }
+        
+        //Posición del puntero al final del array.
+        end($aSueldo);
+        
+        echo '<h1>Recorrido inverso</h1>';
+        //Recorrido inverso del array.
+        while(current($aSueldo)){
+            //Mostrado de la clave y el elemento en la posición actual.
+            echo "<div>En ".key($aSueldo)." el sueldo es de ".current($aSueldo),"</div>";
+            //Avance del puntero hacia atrás.
+            prev($aSueldo);
+        }
+        
+        //Reseteo del puntero del array al inicio del mismo.
+        reset($aSueldo);
+        
+        echo '<h1>Recorrido con each</h1>';
+        echo '<pre>';
+        do{
+            //Inicialización de variable con el array resultante y avance del puntero.
+            $aKeyValue = each($aSueldo);
+            //Mostrado del array.
+            print_r($aKeyValue);
+        }while($aKeyValue != null);
+        echo '</pre>';
         
         
         ?>

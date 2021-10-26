@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <!--
     Autor: Isabel Martínez Guerra.
-    Fecha de última modificación: 24/10/2021.
+    Fecha de última modificación: 26/10/2021.
 -->
 <html>
     <head>
         <title>DAW2</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <<link href="webroot/css/common.css" rel="stylesheet" type="text/css"/>
+        <link href="webroot/css/common.css" rel="stylesheet" type="text/css"/>
         <link href="webroot/css/tema3.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
@@ -31,7 +31,7 @@
                 
                 </tr>
                 <tr>
-                    <td class="cambiar">1. Inicializar variables y mostrar por pantalla.</td>
+                    <td>1. Inicializar variables y mostrar por pantalla.</td>
                     <td><a href="codigoPHP/practica1.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
                     <td><a href="mostrarcodigo/mostrarPractica1.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 
@@ -83,7 +83,7 @@
                 </tr>
                 <tr>
                     <td class="noaun">11. Mostrar el documento PHPDoc del proyecto que se está ejecutando generado con PHP Documentor o ApiGen.</td>
-                    <td><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></td>
+                    <td><img class="exe" src="webroot/media/img/execute-nothing-icon.png" alt="run"/></td>
                     <td><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></td>
                     <!-- <td><a href="codigoPHP/practica11.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a> </td>
                     <td><a href="mostrarcodigo/mostrarPractica11.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td> --> 
@@ -104,12 +104,12 @@
                     <td><a href="mostrarcodigo/mostrarPractica14.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
                 <tr>
-                    <td class="cambiar">15. Crear e inicializar un array con el sueldo percibido de lunes a domingo. Recorrer el array para calcular el sueldo percibido durante la semana.</td>
+                    <td>15. Crear e inicializar un array con el sueldo percibido de lunes a domingo. Recorrer el array para calcular el sueldo percibido durante la semana.</td>
                     <td><a href="codigoPHP/practica15.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
                     <td><a href="mostrarcodigo/mostrarPractica15.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
                 <tr>
-                    <td class="porhacer">16. Recorrer el array anterior utilizando funciones para obtener el mismo resultado.</td>
+                    <td class="cambiar">16. Recorrer el array anterior utilizando funciones para obtener el mismo resultado.</td>
                     <td><a href="codigoPHP/practica16.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
                     <td><a href="mostrarcodigo/mostrarPractica16.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
@@ -117,6 +117,21 @@
                     <td>17. Inicializar un array bidimensional donde almacenamos el nombre de las personas que tienen reservado el asiento en un teatro de 20 filas y 15 asientos por fila. Recorrer el array con distintas técnicas.</td>
                     <td><a href="codigoPHP/practica17.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
                     <td><a href="mostrarcodigo/mostrarPractica17.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
+                </tr>
+                <tr>
+                    <td>18. Recorrer el array anterior utilizando funciones para obtener el mismo resultado.</td>
+                    <td><a href="codigoPHP/practica18.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
+                    <td><a href="mostrarcodigo/mostrarPractica18.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
+                </tr>
+                <tr>
+                    <td class="noaun">19.  Construir una librería de funciones de validación de campos de formularios (LibreríaValidacionFormularios.php) para utilizarla en los siguientes ejercicios. Diferencia entre librería de funciones y clase.</td>
+                    <td><img class="exe" src="webroot/media/img/execute-nothing-icon.png" alt="run"/></td>
+                    <td><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></td>
+                </tr>
+                <tr>
+                    <td class="noaun">20.  Convertir la LibreriaValidacionFormularios.php en una clase ValidacionFormularios.php. El profesor facilitará a los alumnos la clase AAMMDDValidacionFormularios.php desarrollada en el curso anterior como punto de partida.</td>
+                    <td><img class="exe" src="webroot/media/img/execute-nothing-icon.png" alt="run"/></td>
+                    <td><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></td>
                 </tr>
                 <tr>
                     <td class="cambiar">21. Formulario: recoger un cuestionario a y enviarlo a una página Tratamiento.php para que muestre las preguntas y las respuestas recogidas.</td>
@@ -142,7 +157,7 @@
             </table>
         </main>
         <footer>
-            <div>Modificado el 06/10/2021 - Mª Isabel Martínez Guerra</div>
+            <div>Modificado el 26/10/2021 - Mª Isabel Martínez Guerra</div>
             <div><a href="https://github.com/SashaMGuerra/proyectoTema3"><img id="github" src="webroot/media/img/github_logo_white.png" alt="github logo"/></a></div>
         </footer>
     </body>

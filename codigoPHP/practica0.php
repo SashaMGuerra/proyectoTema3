@@ -14,10 +14,12 @@ Fecha de creación:
         /**
          * Fecha de creación:
          * Fecha de modificación:
+         * @author Sasha
+         * @version 1.0
          * 
          * Programa 'hola mundo' que muestra el contenido de phpinfo().
          */
-        echo 'hola mundo';
+        echo '<div>hola mundo</div>';
         phpinfo();
         ?>
     </body>
