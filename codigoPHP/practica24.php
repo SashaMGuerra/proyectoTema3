@@ -56,6 +56,7 @@ Fecha de creación: 22/10/2021
                 "nation" => '',
                 "tfno" => '',
                 "email" => '',
+                "recievemails" => '',
                 "webpage" => '',
                 "additionalinfo" => ''
             ];
@@ -71,6 +72,7 @@ Fecha de creación: 22/10/2021
                 "nation" => '',
                 "tfno" => '',
                 "email" => '',
+                "recievemails" => '',
                 "webpage" => '',
                 "additionalinfo" => ''
             ];
@@ -94,11 +96,25 @@ Fecha de creación: 22/10/2021
                 $aErrores['dni'] = validacionFormularios::validarDni($_REQUEST['dni'], OBLIGATORIO);
                 $aErrores['birthday'] = validacionFormularios::validarFecha($_REQUEST['birthday'], '01/01/2200', '01/01/1900', OBLIGATORIO);
                 $aErrores['height'] = validacionFormularios::comprobarEntero($_REQUEST['height'], 300, 0, OBLIGATORIO);
-                $aErrores['sex'] = validacionFormularios::validarSeleccion($_REQUEST['sex'], OBLIGATORIO); //Toma el value, no el name del input.
+                /*
+                 * Dado que por defecto no hay ninguna opción elegida, y si no
+                 * la hay el $_REQUEST no lo guarda y da error por índice indefinido,
+                 * requiere una comprobación si está definido el índica antes
+                 * de validarse la entrada.
+                 * Si no lo está, lleva a la validación una cadena vacía.
+                 */
+                $aErrores['sex'] = validacionFormularios::validarSeleccion(isset($_REQUEST['sex'])?$_REQUEST['sex']:''); //Toma el value, no el name del input.
                 $aErrores['codpostal'] = validacionFormularios::validarCp($_REQUEST['codpostal'], OBLIGATORIO);
-                $aErrores['nation'] = validacionFormularios::validarSeleccion($_REQUEST['nation'], OBLIGATORIO);
+                $aErrores['nation'] = validacionFormularios::validarSeleccion($_REQUEST['nation']);
                 $aErrores['tfno'] = validacionFormularios::validarTelefono($_REQUEST['tfno']);
                 $aErrores['email'] = validacionFormularios::validarEmail($_REQUEST['email']);
+                /*
+                 * Al igual que con la validación para el input radio anterior,
+                 * también requiere una comprobación sobre si está definido
+                 * el índice antes de validarse la entrada.
+                 * Si no lo está, lleva a la validación una cadena vacía.
+                 */
+                $aErrores['recievemails'] = validacionFormularios::validarSeleccion(isset($_REQUEST['recievemails'])?$_REQUEST['recievemails']:'', OPCIONAL);
                 $aErrores['webpage'] = validacionFormularios::validarURL($_REQUEST['webpage']);
                 $aErrores['additionalinfo'];
                 
@@ -145,8 +161,18 @@ Fecha de creación: 22/10/2021
                 $aForm['nation'] = $_REQUEST['nation'];
                 $aForm['tfno'] = $_REQUEST['tfno'];
                 $aForm['email'] = $_REQUEST['email'];
+                /*
+                 * Los checkbox funcionan como booleanos.
+                 * Si están checados, la variable $_REQUEST recoge que están "on",
+                 * si no, no recoge nada.
+                 * 
+                 * Se inicializa la variable a devolver según si está checada:
+                 * 0 si no, 1 si sí.
+                 */
+                $aForm['recievemails'] = isset($_REQUEST['recievemails'])?1:0;
                 $aForm['webpage'] = $_REQUEST['webpage'];
                 $aForm['additionalinfo'] = $_REQUEST['additionalinfo'];
+                $aForm['differentdt'] = $_REQUEST['differentdt'];
                 
                 //Mostrado del contenido de las variables.
                 echo '<ul>';
@@ -161,9 +187,11 @@ Fecha de creación: 22/10/2021
                 echo '<li>Nacionalidad: ' . $aForm['nation'] . '</li>';
                 echo '<li>Teléfono: ' . $aForm['tfno'] . '</li>';
                 echo '<li>Email: ' . $aForm['email'] . '</li>';
+                echo '<li>Recibir emails: ' . $aForm['recievemails'] . '</li>';
                 echo '<li>Página web: ' . $aForm['webpage'] . '</li>';
                 echo '<li>Información adicional: ' . $aForm['webpage'] . '</li>';
                 echo '<pre>' . $aForm['additionalinfo'] . '</pre>';
+                echo '<li>Fecha y hora: ' . $aForm['differentdt'] . '</li>';
                 echo '</ul>';
 
                 //Mostrado del contenido de la variable $_REQUEST formtateada.
@@ -186,8 +214,8 @@ Fecha de creación: 22/10/2021
                                 <td><label class="obligatorio" for="password">Contraseña</label></td>
                             </tr>
                             <tr>
-                                <td><input type="text" id="username" name="username" value="<?php echo $_REQUEST['username'] ?>"></td>
-                                <td><input type="password" id="password" name="password" value="<?php echo $_REQUEST['password'] ?>"></td>
+                                <td><input type="text" id="username" name="username" value="<?php echo (isset($_REQUEST['username'])?$_REQUEST['username']:'')  ?>"></td>
+                                <td><input type="password" id="password" name="password" value="<?php echo (isset($_REQUEST['password'])?$_REQUEST['password']:'') ?>"></td>
                             </tr>
                             <tr>
                                 <td><?php echo '<span>' . $aErrores['username'] . '</span>' ?></td>
@@ -204,9 +232,9 @@ Fecha de creación: 22/10/2021
                                 <td><label class="obligatorio" for="height">Fecha de nacimiento</label></td>
                             </tr>
                             <tr>
-                                <td><input type="text" id="name" name="name" value="<?php echo $_REQUEST['name'] ?>"></td>
-                                <td><input type="text" id="dni" name="dni" value="<?php echo $_REQUEST['dni'] ?>" placeholder="00000000A"></td>
-                                <td><input type="date" id="birthday" name="birthday" value="<?php echo $_REQUEST['birthday'] ?>"></td>
+                                <td><input type="text" id="name" name="name" value="<?php echo $_REQUEST['name']??'' /*Null coalescing operator*/ ?>"></td>
+                                <td><input type="text" id="dni" name="dni" value="<?php echo $_REQUEST['dni']??'' ?>" placeholder="00000000A"></td>
+                                <td><input type="date" id="birthday" name="birthday" value="<?php echo $_REQUEST['birthday']??'' ?>"></td>
                             </tr>
                             <tr>
                                 <td><?php echo '<span>' . $aErrores['name'] . '</span>' ?></td>
@@ -221,31 +249,26 @@ Fecha de creación: 22/10/2021
                             <tr>
                                 <td>
                                     <select name="nation" id="nation">
-                                        <option value="" selected></option>
+                                        <option value=""></option>
                                         <optgroup label="Europa">
-                                            <option value="spanish">Española</option>
-                                            <option value="french">Francesa</option>
-                                            <option value="greek">Griega</option>
+                                            <option value="spanish" <?php echo (isset($_REQUEST['nation'])?($_REQUEST['nation']=='spanish'?'selected':''):'') ?>>Española</option>
+                                            <option value="greek" <?php echo (isset($_REQUEST['nation'])?($_REQUEST['nation']=='greek'?'selected':''):'') ?>>Griega</option>
                                         </optgroup>
                                         <optgroup label="Asia">
-                                            <option value="russian">Rusa</option>
-                                            <option value="chinese">China</option>
-                                            <option value="indian">India</option>
+                                            <option value="russian" <?php echo (isset($_REQUEST['nation'])?($_REQUEST['nation']=='russian'?'selected':''):'') ?>>Rusa</option>
+                                            <option value="indian" <?php echo (isset($_REQUEST['nation'])?($_REQUEST['nation']=='indian'?'selected':''):'') ?>>India</option>
                                         </optgroup>
                                         <optgroup label="África">
-                                            <option value="morrocan">Marroquí</option>
-                                            <option value="egyptian">Egipcia</option>
-                                            <option value="southafrican">Sudafricana</option>
+                                            <option value="morrocan" <?php echo (isset($_REQUEST['nation'])?($_REQUEST['nation']=='morrocan'?'selected':''):'') ?>>Marroquí</option>
+                                            <option value="southafrican" <?php echo (isset($_REQUEST['nation'])?($_REQUEST['nation']=='southafrican'?'selected':''):'') ?>> Sudafricana</option>
                                         </optgroup>
                                         <optgroup label="América">
-                                            <option value="american">Estadounidense</option>
-                                            <option value="colombian">Colombiana</option>
-                                            <option value="argentina">Argentina</option>
+                                            <option value="canadian" <?php echo (isset($_REQUEST['nation'])?($_REQUEST['nation']=='canadian'?'selected':''):'') ?>>Canadiense</option>
+                                            <option value="colombian" <?php echo (isset($_REQUEST['nation'])?($_REQUEST['nation']=='colombian'?'selected':''):'') ?>>Colombiana</option>
                                         </optgroup>
                                         <optgroup label="Oceanía">
-                                            <option value="australian">Australiana</option>
-                                            <option value="newzealeander">Neozelandesa</option>
-                                            <option value="samoan">Samoana</option>
+                                            <option value="australian" <?php echo (isset($_REQUEST['nation'])?($_REQUEST['nation']=='australian'?'selected':''):'') ?>>Australiana</option>
+                                            <option value="samoan" <?php echo (isset($_REQUEST['nation'])?($_REQUEST['nation']=='samoan'?'selected':''):'') ?>>Samoana</option>
                                         </optgroup>
                                     </select>
                                 </td>
@@ -254,20 +277,32 @@ Fecha de creación: 22/10/2021
                                         <!-- Los input de tipo radio necesitan tener
                                         un valor por defecto para poder ser procesados. -->
                                         <li>
-                                            <input type="radio" id="female" name="sex" value="female" <?php echo ($_REQUEST['sex']=='female'?'checked':'') ?>>
+                                            <input type="radio" id="female" name="sex" value="female" <?php
+                                                if(isset($_REQUEST['sex'])){
+                                                    echo ($_REQUEST['sex']=='female'?'checked':'');
+                                                }
+                                            ?>>
                                             <label for="female">Mujer</label>
                                         </li>
                                         <li>
-                                            <input type="radio" id="male" name="sex" value="male" <?php echo ($_REQUEST['sex']=='male'?'checked':'') ?>>
+                                            <input type="radio" id="male" name="sex" value="male" <?php
+                                                if(isset($_REQUEST['sex'])){
+                                                    echo ($_REQUEST['sex']=='male'?'checked':'');
+                                                }
+                                            ?>>
                                             <label for="male">Hombre</label>
                                         </li>
                                         <li>
-                                            <input type="radio" id="othersex" name="sex" value="othersex" <?php echo ($_REQUEST['sex']=='othersex'?'checked':'') ?>>
+                                            <input type="radio" id="othersex" name="sex" value="othersex" <?php
+                                                if(isset($_REQUEST['sex'])){
+                                                    echo ($_REQUEST['sex']=='othersex'?'checked':'');
+                                                }
+                                            ?>>
                                             <label for="othersex">Otro</label>
                                         </li>
                                     </ul>
                                 </td>
-                                <td><input type="text" id="codpostal" name="codpostal" value="<?php echo $_REQUEST['codpostal'] ?>" placeholder="00000"></td>
+                                <td><input type="text" id="codpostal" name="codpostal" value="<?php echo (isset($_REQUEST['codpostal'])?$_REQUEST['codpostal']:'') ?>" placeholder="00000"></td>
                             </tr>
                             <tr>
                                 <td><?php echo '<span>' . $aErrores['nation'] . '</span>' ?></td>
@@ -280,7 +315,7 @@ Fecha de creación: 22/10/2021
                                 <td></td>
                             </tr>
                             <tr>
-                                <td><input type="number" id="height" name="height" value="<?php echo $_REQUEST['height'] ?>" placeholder="cm"></td>
+                                <td><input type="number" id="height" name="height" value="<?php echo (isset($_REQUEST['height'])?$_REQUEST['height']:'') ?>" placeholder="cm"></td>
                                 <td></td>
                                 <td></td>
                             </tr>
@@ -300,9 +335,9 @@ Fecha de creación: 22/10/2021
                                 <td><label for="webpage">Página web</label></td>
                             </tr>
                             <tr>
-                                <td><input type="tel" id="tfno" name="tfno" value="<?php echo $_REQUEST['tfno'] ?>"></td>
-                                <td><input type="email" id="email" name="email" value="<?php echo $_REQUEST['email'] ?>"></td>
-                                <td><input type="url" id="webpage" name="webpage" value="<?php echo $_REQUEST['webpage'] ?>"></td>
+                                <td><input type="tel" id="tfno" name="tfno" value="<?php echo (isset($_REQUEST['tfno'])?$_REQUEST['tfno']:'') ?>"></td>
+                                <td><input type="email" id="email" name="email" value="<?php echo (isset($_REQUEST['email'])?$_REQUEST['email']:'') ?>"></td>
+                                <td><input type="url" id="webpage" name="webpage" value="<?php echo (isset($_REQUEST['webpage'])?$_REQUEST['webpage']:'') ?>"></td>
                             </tr>
                             <tr>
                                 <td><?php echo '<span>' . $aErrores['tfno'] . '</span>' ?></td>
@@ -312,21 +347,22 @@ Fecha de creación: 22/10/2021
                             <tr>
                                 <td></td>
                                 <td>
-                                    <input type="checkbox" id="recievemails" name="recievemails" value="recievemails" checked>
+                                    <input type="checkbox" id="recievemails" name="recievemails" <?php echo (isset($_REQUEST['recievemails'])?'checked':'') ?>>
                                     <label class="cbox" for="recievemails">Recibir correos informativos.</label>
                                 </td>
-                                <td></td>
+                                <td><?php echo '<span>' . $aErrores['recievemails'] . '</span>' ?></td>
                             </tr>
                         </table>
                     </fieldset>
                     <fieldset>
                         <legend>Información adicional</legend>
-                        <textarea id="additionalinfo" name="additionalinfo" placeholder="Escriba aquí cualquier información adicional que desee añadir."><?php echo $_REQUEST['additionalinfo'] ?></textarea>
+                        <textarea id="additionalinfo" name="additionalinfo" placeholder="Escriba aquí cualquier información adicional que desee añadir."><?php echo (isset($_REQUEST['additionalinfo'])?$_REQUEST['additionalinfo']:'') ?></textarea>
                         <label for="differentdt">Elegir fecha y hora: </label>
-                        <input for="datetime" id="differentdt" name="differentdt" 
+                        <input type="datetime-local" id="differentdt" name="differentdt" value="<?php echo $_REQUEST['differentdt']??'' ?>"> 
                     </fieldset>
-                    <input type="reset" name="reset" value="Limpiar formulario">
-                    <input type="submit" name="submit" value="Enviar">
+                    <fieldset class="submit">
+                        <input type="submit" id="submit" name="submit" value="Enviar">
+                    </fieldset>
             </form>
                 <?php
                 }

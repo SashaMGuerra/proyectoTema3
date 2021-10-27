@@ -500,7 +500,7 @@ class validacionFormularios {  //ELIMINA EL METODO VALIDATEDATE Y LO INCLUYE EN 
      * @return null|string Devuelve null si es correcto o un mensaje de error
      * si no se ha seleccionado ninguna opción.
      */
-    public static function validarSeleccion($seleccion, $obligatorio = 0){
+    public static function validarSeleccion($seleccion, $obligatorio = 1){
         $mensajeError = null;
         if($obligatorio && !is_null(self::comprobarNoVacio($seleccion))){
             $mensajeError = 'No se ha seleccionado ninguna opción.';
