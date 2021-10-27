@@ -488,7 +488,8 @@ class validacionFormularios {  //ELIMINA EL METODO VALIDATEDATE Y LO INCLUYE EN 
     /**
      * Función validarInputRadio
      * 
-     * Comprueba si se ha seleccionado alguna de las opciones de un input radio.
+     * Comprueba si se ha seleccionado alguna de las opciones en un elemento
+     * de opciones múltiples (input radio, listas desplegables).
      * 
      * @author Isabel Martínez Guerra
      * @version 1.0 Creación de la función.
@@ -499,16 +500,12 @@ class validacionFormularios {  //ELIMINA EL METODO VALIDATEDATE Y LO INCLUYE EN 
      * @return null|string Devuelve null si es correcto o un mensaje de error
      * si no se ha seleccionado ninguna opción.
      */
-    public static function validarInputRadio($seleccion, $obligatorio = 0){
+    public static function validarSeleccion($seleccion, $obligatorio = 0){
         $mensajeError = null;
         if($obligatorio && !is_null(self::comprobarNoVacio($seleccion))){
-            $mensajeError = 'No se ha seleccionado ninguna opción';
+            $mensajeError = 'No se ha seleccionado ninguna opción.';
         }
         return $mensajeError;
     }
 }
-
-//Creada función validarInputRadio
-//Modificada función validarDNI
-
 ?>

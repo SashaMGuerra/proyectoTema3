@@ -13,6 +13,7 @@ table{
     margin: auto;
     width: 100%;
     table-layout: fixed;
+    /*margin-left: 50px;*/
 }
 td, th{
     vertical-align: sub;
@@ -23,6 +24,10 @@ span{
     color: red;
     font-size: small;
     
+}
+
+fieldset.signup table{
+    width: 50%;
 }
 
 label.obligatorio:after{
@@ -37,4 +42,13 @@ ul.inputRadio{
 }
 ul.inputRadio li input{
     margin: 0 15px;
+}
+
+textarea{
+    width: 100%;
+    resize: vertical;
+}
+
+label.cbox{
+    font-size: small;
 }

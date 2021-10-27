@@ -45,18 +45,34 @@ Fecha de creación: 22/10/2021
              * y errores vacíos.
              */
             $aForm = [
+                "username" => '',
+                "password" => '',
                 "name" => '',
                 "dni" => '',
                 "birthday" => '',
                 "height" => '',
-                "sex" => ''
+                "sex" => '',
+                "codpostal" => '',
+                "nation" => '',
+                "tfno" => '',
+                "email" => '',
+                "webpage" => '',
+                "additionalinfo" => ''
             ];
             $aErrores = [
+                "username" => '',
+                "password" => '',
                 "name" => '',
                 "dni" => '',
                 "birthday" => '',
                 "height" => '',
-                "sex" => ''
+                "sex" => '',
+                "codpostal" => '',
+                "nation" => '',
+                "tfno" => '',
+                "email" => '',
+                "webpage" => '',
+                "additionalinfo" => ''
             ];
 
             /*
@@ -72,11 +88,19 @@ Fecha de creación: 22/10/2021
                 /*
                  * Registro de errores. Valida todos los campos.
                  */
+                $aErrores['username'] = validacionFormularios::comprobarAlfaNumerico($_REQUEST['username'], 150, 7, OBLIGATORIO);
+                $aErrores['password'] = validacionFormularios::validarPassword($_REQUEST['password'], 16, 4, 2); //Su complejidad es de tipo 2: admite números y letras.
                 $aErrores['name'] = validacionFormularios::comprobarAlfabetico($_REQUEST['name'], 500, 3, OBLIGATORIO);
                 $aErrores['dni'] = validacionFormularios::validarDni($_REQUEST['dni'], OBLIGATORIO);
                 $aErrores['birthday'] = validacionFormularios::validarFecha($_REQUEST['birthday'], '01/01/2200', '01/01/1900', OBLIGATORIO);
                 $aErrores['height'] = validacionFormularios::comprobarEntero($_REQUEST['height'], 300, 0, OBLIGATORIO);
-                $aErrores['sex'] = validacionFormularios::validarInputRadio($_REQUEST['sex'], OBLIGATORIO); //Toma el value, no el name del input.
+                $aErrores['sex'] = validacionFormularios::validarSeleccion($_REQUEST['sex'], OBLIGATORIO); //Toma el value, no el name del input.
+                $aErrores['codpostal'] = validacionFormularios::validarCp($_REQUEST['codpostal'], OBLIGATORIO);
+                $aErrores['nation'] = validacionFormularios::validarSeleccion($_REQUEST['nation'], OBLIGATORIO);
+                $aErrores['tfno'] = validacionFormularios::validarTelefono($_REQUEST['tfno']);
+                $aErrores['email'] = validacionFormularios::validarEmail($_REQUEST['email']);
+                $aErrores['webpage'] = validacionFormularios::validarURL($_REQUEST['webpage']);
+                $aErrores['additionalinfo'];
                 
                 
                 /*
@@ -91,14 +115,7 @@ Fecha de creación: 22/10/2021
                     }
                 }
 
-                /*
-                 * Recogida de la información enviada, ya limpia si tenía errores.
-                 */
-                $aForm['name'] = $_REQUEST['name'];
-                $aForm['dni'] = $_REQUEST['dni'];
-                $aForm['birthday'] = $_REQUEST['birthday'];
-                $aForm['height'] = $_REQUEST['height'];
-                $aForm['sex'] = $_REQUEST['sex'];
+                
             } else {
 
                 /*
@@ -114,13 +131,39 @@ Fecha de creación: 22/10/2021
              * introduzcan correctamente los datos.
              */
             if ($bEntradaOK) {
+                /*
+                 * Recogida de la información enviada.
+                 */
+                $aForm['username'] = $_REQUEST['username'];
+                $aForm['password'] = $_REQUEST['password'];
+                $aForm['name'] = $_REQUEST['name'];
+                $aForm['dni'] = $_REQUEST['dni'];
+                $aForm['birthday'] = $_REQUEST['birthday'];
+                $aForm['height'] = $_REQUEST['height'];
+                $aForm['sex'] = $_REQUEST['sex'];
+                $aForm['codpostal'] = $_REQUEST['codpostal'];
+                $aForm['nation'] = $_REQUEST['nation'];
+                $aForm['tfno'] = $_REQUEST['tfno'];
+                $aForm['email'] = $_REQUEST['email'];
+                $aForm['webpage'] = $_REQUEST['webpage'];
+                $aForm['additionalinfo'] = $_REQUEST['additionalinfo'];
+                
                 //Mostrado del contenido de las variables.
                 echo '<ul>';
+                echo '<li>Nombre de usuario: ' . $aForm['username'] . '</li>';
+                echo '<li>Contraseña: ' . $aForm['password'] . '</li>';
                 echo '<li>Nombre: ' . $aForm['name'] . '</li>';
                 echo '<li>DNI: ' . $aForm['dni'] . '</li>';
                 echo '<li>Fecha de nacimiento: ' . $aForm['birthday'] . '</li>';
                 echo '<li>Altura: ' . $aForm['height'] . '</li>';
                 echo '<li>Sexo: ' . $aForm['sex'] . '</li>';
+                echo '<li>Código postal: ' . $aForm['codpostal'] . '</li>';
+                echo '<li>Nacionalidad: ' . $aForm['nation'] . '</li>';
+                echo '<li>Teléfono: ' . $aForm['tfno'] . '</li>';
+                echo '<li>Email: ' . $aForm['email'] . '</li>';
+                echo '<li>Página web: ' . $aForm['webpage'] . '</li>';
+                echo '<li>Información adicional: ' . $aForm['webpage'] . '</li>';
+                echo '<pre>' . $aForm['additionalinfo'] . '</pre>';
                 echo '</ul>';
 
                 //Mostrado del contenido de la variable $_REQUEST formtateada.
@@ -136,8 +179,24 @@ Fecha de creación: 22/10/2021
                  */
                 ?>
                 <form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+                    <fieldset class="signup">
+                        <table>
+                            <tr>
+                                <td><label class="obligatorio" for="username">Nombre de usuario</label></td>
+                                <td><label class="obligatorio" for="password">Contraseña</label></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" id="username" name="username" value="<?php echo $_REQUEST['username'] ?>"></td>
+                                <td><input type="password" id="password" name="password" value="<?php echo $_REQUEST['password'] ?>"></td>
+                            </tr>
+                            <tr>
+                                <td><?php echo '<span>' . $aErrores['username'] . '</span>' ?></td>
+                                <td><?php echo '<span>' . $aErrores['password'] . '</span>' ?></td>
+                            </tr>
+                        </table>
+                    </fieldset>
                     <fieldset>
-                        <legend>Información</legend>
+                        <legend>Información personal</legend>
                         <table>
                             <tr>
                                 <td><label class="obligatorio" for="name">Nombre</label></td>
@@ -145,9 +204,9 @@ Fecha de creación: 22/10/2021
                                 <td><label class="obligatorio" for="height">Fecha de nacimiento</label></td>
                             </tr>
                             <tr>
-                                <td><input type="text" id="name" name="name" value="<?php echo $aForm['name'] ?>"></td>
-                                <td><input type="text" id="dni" name="dni" value="<?php echo $aForm['dni'] ?>" placeholder="00000000A"></td>
-                                <td><input type="date" id="birthday" name="birthday" value="<?php echo $aForm['birthday'] ?>"></td>
+                                <td><input type="text" id="name" name="name" value="<?php echo $_REQUEST['name'] ?>"></td>
+                                <td><input type="text" id="dni" name="dni" value="<?php echo $_REQUEST['dni'] ?>" placeholder="00000000A"></td>
+                                <td><input type="date" id="birthday" name="birthday" value="<?php echo $_REQUEST['birthday'] ?>"></td>
                             </tr>
                             <tr>
                                 <td><?php echo '<span>' . $aErrores['name'] . '</span>' ?></td>
@@ -155,35 +214,118 @@ Fecha de creación: 22/10/2021
                                 <td><?php echo '<span>' . $aErrores['birthday'] . '</span>' ?></td>
                             </tr>
                             <tr>
-                                <td><label class="obligatorio" for="height">Altura</label></td>
+                                <td><label class="obligatorio" for="nation">Nacionalidad</label></td>
                                 <td><label class="obligatorio">Sexo</label></td>
-                                <td></td>
+                                <td><label class="obligatorio">Código postal</label></td>
                             </tr>
                             <tr>
-                                <td><input type="number" id="height" name="height" value="<?php echo $aForm['height'] ?>" placeholder="cm"></td>
+                                <td>
+                                    <select name="nation" id="nation">
+                                        <option value="" selected></option>
+                                        <optgroup label="Europa">
+                                            <option value="spanish">Española</option>
+                                            <option value="french">Francesa</option>
+                                            <option value="greek">Griega</option>
+                                        </optgroup>
+                                        <optgroup label="Asia">
+                                            <option value="russian">Rusa</option>
+                                            <option value="chinese">China</option>
+                                            <option value="indian">India</option>
+                                        </optgroup>
+                                        <optgroup label="África">
+                                            <option value="morrocan">Marroquí</option>
+                                            <option value="egyptian">Egipcia</option>
+                                            <option value="southafrican">Sudafricana</option>
+                                        </optgroup>
+                                        <optgroup label="América">
+                                            <option value="american">Estadounidense</option>
+                                            <option value="colombian">Colombiana</option>
+                                            <option value="argentina">Argentina</option>
+                                        </optgroup>
+                                        <optgroup label="Oceanía">
+                                            <option value="australian">Australiana</option>
+                                            <option value="newzealeander">Neozelandesa</option>
+                                            <option value="samoan">Samoana</option>
+                                        </optgroup>
+                                    </select>
+                                </td>
                                 <td>
                                     <ul class="inputRadio">
                                         <!-- Los input de tipo radio necesitan tener
                                         un valor por defecto para poder ser procesados. -->
                                         <li>
-                                            <input type="radio" id="female" name="sex" value="female" <?php echo ($aForm['sex']=='female'?'checked':'') ?>>
+                                            <input type="radio" id="female" name="sex" value="female" <?php echo ($_REQUEST['sex']=='female'?'checked':'') ?>>
                                             <label for="female">Mujer</label>
                                         </li>
                                         <li>
-                                            <input type="radio" id="male" name="sex" value="male" <?php echo ($aForm['sex']=='male'?'checked':'') ?>>
+                                            <input type="radio" id="male" name="sex" value="male" <?php echo ($_REQUEST['sex']=='male'?'checked':'') ?>>
                                             <label for="male">Hombre</label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" id="othersex" name="sex" value="othersex" <?php echo ($_REQUEST['sex']=='othersex'?'checked':'') ?>>
+                                            <label for="othersex">Otro</label>
                                         </li>
                                     </ul>
                                 </td>
+                                <td><input type="text" id="codpostal" name="codpostal" value="<?php echo $_REQUEST['codpostal'] ?>" placeholder="00000"></td>
+                            </tr>
+                            <tr>
+                                <td><?php echo '<span>' . $aErrores['nation'] . '</span>' ?></td>
+                                <td><?php echo '<span>' . $aErrores['sex'] . '</span>' ?></td>
+                                <td><?php echo '<span>' . $aErrores['codpostal'] . '</span>' ?></td>
+                            </tr>
+                            <tr>
+                                <td><label class="obligatorio" for="height">Altura</label></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><input type="number" id="height" name="height" value="<?php echo $_REQUEST['height'] ?>" placeholder="cm"></td>
+                                <td></td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td><?php echo '<span>' . $aErrores['height'] . '</span>' ?></td>
-                                <td><?php echo '<span>' . $aErrores['sex'] . '</span>' ?></td>
+                                <td></td>
                                 <td></td>
                             </tr>
                         </table>
                     </fieldset>
+                    <fieldset>
+                        <legend>Información de contacto</legend>
+                        <table>
+                            <tr>
+                                <td><label for="tfno">Teléfono</label></td>
+                                <td><label for="email">Correo electrónico</label></td>
+                                <td><label for="webpage">Página web</label></td>
+                            </tr>
+                            <tr>
+                                <td><input type="tel" id="tfno" name="tfno" value="<?php echo $_REQUEST['tfno'] ?>"></td>
+                                <td><input type="email" id="email" name="email" value="<?php echo $_REQUEST['email'] ?>"></td>
+                                <td><input type="url" id="webpage" name="webpage" value="<?php echo $_REQUEST['webpage'] ?>"></td>
+                            </tr>
+                            <tr>
+                                <td><?php echo '<span>' . $aErrores['tfno'] . '</span>' ?></td>
+                                <td><?php echo '<span>' . $aErrores['email'] . '</span>' ?></td>
+                                <td><?php echo '<span>' . $aErrores['webpage'] . '</span>' ?></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <input type="checkbox" id="recievemails" name="recievemails" value="recievemails" checked>
+                                    <label class="cbox" for="recievemails">Recibir correos informativos.</label>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Información adicional</legend>
+                        <textarea id="additionalinfo" name="additionalinfo" placeholder="Escriba aquí cualquier información adicional que desee añadir."><?php echo $_REQUEST['additionalinfo'] ?></textarea>
+                        <label for="differentdt">Elegir fecha y hora: </label>
+                        <input for="datetime" id="differentdt" name="differentdt" 
+                    </fieldset>
+                    <input type="reset" name="reset" value="Limpiar formulario">
                     <input type="submit" name="submit" value="Enviar">
             </form>
                 <?php
@@ -191,7 +333,7 @@ Fecha de creación: 22/10/2021
                 ?>
         </main>
         <footer>
-            <div>Modificado el 26/10/2021 - Mª Isabel Martínez Guerra</div>
+            <div>Modificado el 27/10/2021 - Mª Isabel Martínez Guerra</div>
         </footer>
     </body>
 </html>
