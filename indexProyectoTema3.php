@@ -153,6 +153,11 @@
                     <td><a href="codigoPHP/practica24.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
                     <td><a href="mostrarcodigo/mostrarPractica24.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
+                <tr>
+                    <td class="cambiar">25. Trabajar en PlantillaFormulario.php mi plantilla para hacer formularios como churros</td>
+                    <td><a href="codigoPHP/PlantillaFormulario.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
+                    <td><a href="mostrarcodigo/mostrarPractica25.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
+                </tr>
                 
             </table>
         </main>
