@@ -143,8 +143,8 @@ Fecha de creación: 28/10/2021
                  * de validarse la entrada.
                  * Si no lo está, lleva a la validación una cadena vacía.
                  */
-                $aErrores['inputRadioObligatorio'];
-                
+                $aErrores['inputRadioObligatorio'] = validacionFormularios::validarSeleccion($_REQUEST['inputRadioObligatorio']??''); //Toma el value, no el name del input.
+
                 /*
                  * Recorrido del array de errores.
                  * Si existe alguno, cambia el manejador de errores a false
@@ -337,24 +337,19 @@ Fecha de creación: 28/10/2021
                             <tr>
                                 <td>Input radio obligatorio</td>
                                 <td>
-                                    <ul>
-                                        <li>
-                                            <input type="radio" id="inputRadioObligatorioOpcion1" name="inputRadioObligatorio" value="inputRadioObligatorioOpcion1" <?php
-                                            if (isset($_REQUEST['inputRadioObligatorio'])) {
-                                                echo ($_REQUEST['inputRadioObligatorio'] == 'inputRadioObligatorioOpcion1' ? 'checked' : '');
-                                            }
-                                            ?>>
-                                            <label for="inputRadioObligatorioOpcion1">Opción 1</label>
-                                        </li>
-                                        <li>
-                                            <input type="radio" id="inputRadioObligatorioOpcion2" name="inputRadioObligatorio" value="inputRadioObligatorioOpcion2" <?php
-                                            if (isset($_REQUEST['inputRadioObligatorio'])) {
-                                                echo ($_REQUEST['inputRadioObligatorio'] == 'inputRadioObligatorioOpcion2' ? 'checked' : '');
-                                            }
-                                            ?>>
-                                            <label for="inputRadioObligatorioOpcion2">Opción 2</label>
-                                        </li>
-                                    </ul>
+                                    <input type="radio" id="inputRadioObligatorioOpcion1" name="inputRadioObligatorio" value="inputRadioObligatorioOpcion1" <?php
+                                    if (isset($_REQUEST['inputRadioObligatorio'])) {
+                                        echo ($_REQUEST['inputRadioObligatorio'] == 'inputRadioObligatorioOpcion1' ? 'checked' : '');
+                                    }
+                                    ?>>
+                                    <label for="inputRadioObligatorioOpcion1">Opción 1</label>
+
+                                    <input type="radio" id="inputRadioObligatorioOpcion2" name="inputRadioObligatorio" value="inputRadioObligatorioOpcion2" <?php
+                                    if (isset($_REQUEST['inputRadioObligatorio'])) {
+                                        echo ($_REQUEST['inputRadioObligatorio'] == 'inputRadioObligatorioOpcion2' ? 'checked' : '');
+                                    }
+                                    ?>>
+                                    <label for="inputRadioObligatorioOpcion2">Opción 2</label>
                                 </td>
                                 <td><?php echo '<span>' . $aErrores['inputRadioObligatorio'] . '</span>' ?></td>
                             </tr>
