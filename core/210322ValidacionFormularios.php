@@ -491,6 +491,9 @@ class validacionFormularios {  //ELIMINA EL METODO VALIDATEDATE Y LO INCLUYE EN 
      * Comprueba si se ha seleccionado alguna de las opciones en un elemento
      * de opciones múltiples (input radio, listas desplegables).
      * 
+     * En realidad utiliza la función comprobarNoVacio para devolver un mensaje
+     * de error más adecuado a las listas de opciones.
+     * 
      * @author Isabel Martínez Guerra
      * @version 1.0 Creación de la función.
      * @since 2021-10-26
