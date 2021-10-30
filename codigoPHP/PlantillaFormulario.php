@@ -9,6 +9,7 @@ Fecha de creación: 28/10/2021
         <title>IMG - Plantilla Formulario</title>
         <link href="../webroot/css/common.css" rel="stylesheet" type="text/css"/>
         <style>
+            /*Modificación general de la cabecera y footer*/
             h2{
                 text-align: center;
             }
@@ -39,6 +40,19 @@ Fecha de creación: 28/10/2021
                 border: 2px lightsteelblue groove;
                 padding: 3px;
             }
+            fieldset.submit{
+                border: none;
+                padding: 0;
+                text-align: center;
+            }
+            input[type='submit']{
+                font-variant: small-caps;
+            }
+            /*Bloqueo del ancho del textarea*/
+            textarea{
+                width: 95%;
+                resize: vertical;
+            }
             
             /*Formato de campos obligatorios*/
             .inputObligatorio{
@@ -47,7 +61,6 @@ Fecha de creación: 28/10/2021
             input:hover{
                 background-color: gainsboro;
             }
-            
             
             /*Formato de la tabla de la información enviada*/
             table.showVariables{
@@ -64,12 +77,6 @@ Fecha de creación: 28/10/2021
             table.showVariables td{
                 padding: 4px;
             }
-
-            /*Bloqueo del ancho del textarea*/
-            textarea{
-                width: 95%;
-                resize: vertical;
-            }
         </style>
     </head>
     <body>
@@ -80,7 +87,7 @@ Fecha de creación: 28/10/2021
             <?php
             /**
              * Fecha de creación: 28/10/2021
-             * Fecha de última modificación: 28/10/2021
+             * Fecha de última modificación: 30/10/2021
              * @version 1.0
              * @author Sasha
              * 
@@ -112,20 +119,20 @@ Fecha de creación: 28/10/2021
                 'inputEnteroOpcional' => '',
                 'inputFloatObligatorio' => '',
                 'inputFloatOpcional' => '',
+                'inputTextareaObligatorio' => '',
+                'inputTextareaOpcional' => '',
+                
                 'inputFechaObligatorio' => '',
                 'inputFechaOpcional' => '',
                 'inputHoraObligatorio' => '',
                 'inputHoraOpcional' => '',
                 'inputFechaHoraObligatorio' => '',
                 'inputFechaHoraOpcional' => '',
-                'inputTextareaObligatorio' => '',
-                'inputTextareaOpcional' => '',
-                'inputListaDesplegableObligatorio' => '',
-                'inputListaDesplegableOpcional' => '',
-                'inputRadioObligatorio' => '',
-                'inputRadioOpcional' => '',
-                'inputCheckboxObligatorio' => '',
-                'inputCheckboxOpcional' => '',
+                'inputMesObligatorio' => '',
+                'inputMesOpcional' => '',
+                'inputSemanaObligatorio' => '',
+                'inputSemanaOpcional' => '',
+                
                 'inputTfnoObligatorio' => '',
                 'inputTfnoOpcional' => '',
                 'inputCPObligatorio' => '',
@@ -134,13 +141,16 @@ Fecha de creación: 28/10/2021
                 'inputEmailOpcional' => '',
                 'inputUrlObligatorio' => '',
                 'inputUrlOpcional' => '',
-                'inputMesObligatorio' => '',
-                'inputMesOpcional' => '',
-                'inputSemanaObligatorio' => '',
-                'inputSemanaOpcional' => '',
                 'inputRangoObligatorio' => '',
                 'inputRangoOpcional' => '',
-                'inputPasswordObligatorio' => ''
+                'inputPasswordObligatorio' => '',
+                
+                'inputListaDesplegableObligatorio' => '',
+                'inputListaDesplegableOpcional' => '',
+                'inputRadioObligatorio' => '',
+                'inputRadioOpcional' => '',
+                'inputCheckboxObligatorio' => '',
+                'inputCheckboxOpcional' => ''
             ];
 
             /*
@@ -155,20 +165,20 @@ Fecha de creación: 28/10/2021
                 'inputEnteroOpcional' => '',
                 'inputFloatObligatorio' => '',
                 'inputFloatOpcional' => '',
+                'inputTextareaObligatorio' => '',
+                'inputTextareaOpcional' => '',
+                
                 'inputFechaObligatorio' => '',
                 'inputFechaOpcional' => '',
                 'inputHoraObligatorio' => '',
                 'inputHoraOpcional' => '',
                 'inputFechaHoraObligatorio' => '',
                 'inputFechaHoraOpcional' => '',
-                'inputTextareaObligatorio' => '',
-                'inputTextareaOpcional' => '',
-                'inputListaDesplegableObligatorio' => '',
-                'inputListaDesplegableOpcional' => '',
-                'inputRadioObligatorio' => '',
-                'inputRadioOpcional' => '',
-                'inputCheckboxObligatorio' => '',
-                'inputCheckboxOpcional' => '',
+                'inputMesObligatorio' => '',
+                'inputMesOpcional' => '',
+                'inputSemanaObligatorio' => '',
+                'inputSemanaOpcional' => '',
+                
                 'inputTfnoObligatorio' => '',
                 'inputTfnoOpcional' => '',
                 'inputCPObligatorio' => '',
@@ -177,13 +187,16 @@ Fecha de creación: 28/10/2021
                 'inputEmailOpcional' => '',
                 'inputUrlObligatorio' => '',
                 'inputUrlOpcional' => '',
-                'inputMesObligatorio' => '',
-                'inputMesOpcional' => '',
-                'inputSemanaObligatorio' => '',
-                'inputSemanaOpcional' => '',
                 'inputRangoObligatorio' => '',
                 'inputRangoOpcional' => '',
-                'inputPasswordObligatorio' => ''
+                'inputPasswordObligatorio' => '',
+                
+                'inputListaDesplegableObligatorio' => '',
+                'inputListaDesplegableOpcional' => '',
+                'inputRadioObligatorio' => '',
+                'inputRadioOpcional' => '',
+                'inputCheckboxObligatorio' => '',
+                'inputCheckboxOpcional' => ''
             ];
 
             /*
@@ -208,6 +221,8 @@ Fecha de creación: 28/10/2021
                 $aErrores['inputEnteroOpcional'] = validacionFormularios::comprobarEntero($_REQUEST['inputEnteroOpcional']);
                 $aErrores['inputFloatObligatorio'] = validacionFormularios::comprobarFloat($_REQUEST['inputFloatObligatorio'], PHP_FLOAT_MAX, PHP_INT_MIN, OBLIGATORIO);
                 $aErrores['inputFloatOpcional'] = validacionFormularios::comprobarFloat($_REQUEST['inputFloatOpcional']);
+                $aErrores['inputTextareaObligatorio'] = validacionFormularios::comprobarAlfaNumerico($_REQUEST['inputTextareaObligatorio'], MAX_TAMANIO_ALFA, MIN_TAMANIO_ALFA, OBLIGATORIO);
+                $aErrores['inputTextareaOpcional'] = validacionFormularios::comprobarAlfaNumerico($_REQUEST['inputTextareaOpcional']);
                 /*
                  * NOTA: validarFecha no funciona correctamente con campo texto.
                  * Admite la introducción de una sola letra.
@@ -218,8 +233,23 @@ Fecha de creación: 28/10/2021
                 $aErrores['inputHoraOpcional'] = validacionFormularios::validarFecha($_REQUEST['inputHoraOpcional']);
                 $aErrores['inputFechaHoraObligatorio'] = validacionFormularios::validarFecha($_REQUEST['inputFechaHoraObligatorio'], FECHA_MAXIMA, FECHA_MINIMA, OBLIGATORIO);
                 $aErrores['inputFechaHoraOpcional'] = validacionFormularios::validarFecha($_REQUEST['inputFechaHoraOpcional']);
-                $aErrores['inputTextareaObligatorio'] = validacionFormularios::comprobarAlfaNumerico($_REQUEST['inputTextareaObligatorio'], MAX_TAMANIO_ALFA, MIN_TAMANIO_ALFA, OBLIGATORIO);
-                $aErrores['inputTextareaOpcional'] = validacionFormularios::comprobarAlfaNumerico($_REQUEST['inputTextareaOpcional']);
+                $aErrores['inputMesObligatorio'] = validacionFormularios::validarFecha($_REQUEST['inputMesObligatorio'], FECHA_MAXIMA, FECHA_MINIMA, OBLIGATORIO);
+                $aErrores['inputMesOpcional'] = validacionFormularios::validarFecha($_REQUEST['inputMesOpcional']);
+                $aErrores['inputSemanaObligatorio'] = validacionFormularios::validarFecha($_REQUEST['inputSemanaObligatorio'], FECHA_MAXIMA, FECHA_MINIMA, OBLIGATORIO);
+                $aErrores['inputSemanaOpcional'] = validacionFormularios::validarFecha($_REQUEST['inputSemanaOpcional']);
+                
+                $aErrores['inputTfnoObligatorio'] = validacionFormularios::validarTelefono($_REQUEST['inputTfnoObligatorio'], OBLIGATORIO);
+                $aErrores['inputTfnoOpcional'] = validacionFormularios::validarTelefono($_REQUEST['inputTfnoOpcional']);
+                $aErrores['inputCPObligatorio'] = validacionFormularios::validarCp($_REQUEST['inputCPObligatorio'], OBLIGATORIO);
+                $aErrores['inputCPOpcional'] = validacionFormularios::validarCp($_REQUEST['inputCPOpcional']);
+                $aErrores['inputEmailObligatorio'] = validacionFormularios::validarEmail($_REQUEST['inputEmailObligatorio'], OBLIGATORIO);
+                $aErrores['inputEmailOpcional'] = validacionFormularios::validarEmail($_REQUEST['inputEmailOpcional']);
+                $aErrores['inputUrlObligatorio'] = validacionFormularios::validarURL($_REQUEST['inputUrlObligatorio'], OBLIGATORIO);
+                $aErrores['inputUrlOpcional'] = validacionFormularios::validarURL($_REQUEST['inputUrlOpcional']);
+                $aErrores['inputRangoObligatorio'] = validacionFormularios::comprobarEntero($_REQUEST['inputRangoObligatorio'], MAX_RANGO, MIN_RANGO, OBLIGATORIO);
+                $aErrores['inputRangoOpcional'] = validacionFormularios::comprobarEntero($_REQUEST['inputRangoOpcional'], MAX_RANGO, MIN_RANGO);
+                $aErrores['inputPasswordObligatorio'] = validacionFormularios::validarPassword($_REQUEST['inputPasswordObligatorio']);
+                                
                 $aErrores['inputListaDesplegableObligatorio'] = validacionFormularios::validarSeleccion($_REQUEST['inputListaDesplegableObligatorio']);
                 $aErrores['inputListaDesplegableOpcional'] = validacionFormularios::validarSeleccion($_REQUEST['inputListaDesplegableOpcional'], OPCIONAL);
                 /*
@@ -238,23 +268,9 @@ Fecha de creación: 28/10/2021
                  * Comprueba si está definido antes de validar la entrada. Si no
                  * lo está, lleva a la validación una cadena vacía.
                  */
+                //$aErrores['inputCheckboxObligatorio'] = validacionFormularios::validarSeleccion($_REQUEST['inputCheckboxObligatorio']??'');
                 $aErrores['inputCheckboxObligatorio'] = validacionFormularios::validarSeleccion($_REQUEST['inputCheckboxObligatorio']??'');
                 $aErrores['inputCheckboxOpcional'] = validacionFormularios::validarSeleccion($_REQUEST['inputCheckboxOpcional']??'', OPCIONAL);
-                $aErrores['inputTfnoObligatorio'] = validacionFormularios::validarTelefono($_REQUEST['inputTfnoObligatorio'], OBLIGATORIO);
-                $aErrores['inputTfnoOpcional'] = validacionFormularios::validarTelefono($_REQUEST['inputTfnoOpcional']);
-                $aErrores['inputCPObligatorio'] = validacionFormularios::validarCp($_REQUEST['inputCPObligatorio'], OBLIGATORIO);
-                $aErrores['inputCPOpcional'] = validacionFormularios::validarCp($_REQUEST['inputCPOpcional']);
-                $aErrores['inputEmailObligatorio'] = validacionFormularios::validarEmail($_REQUEST['inputEmailObligatorio'], OBLIGATORIO);
-                $aErrores['inputEmailOpcional'] = validacionFormularios::validarEmail($_REQUEST['inputEmailOpcional']);
-                $aErrores['inputUrlObligatorio'] = validacionFormularios::validarURL($_REQUEST['inputUrlObligatorio'], OBLIGATORIO);
-                $aErrores['inputUrlOpcional'] = validacionFormularios::validarURL($_REQUEST['inputUrlOpcional']);
-                $aErrores['inputMesObligatorio'] = validacionFormularios::validarFecha($_REQUEST['inputMesObligatorio'], FECHA_MAXIMA, FECHA_MINIMA, OBLIGATORIO);
-                $aErrores['inputMesOpcional'] = validacionFormularios::validarFecha($_REQUEST['inputMesOpcional']);
-                $aErrores['inputSemanaObligatorio'] = validacionFormularios::validarFecha($_REQUEST['inputSemanaObligatorio'], FECHA_MAXIMA, FECHA_MINIMA, OBLIGATORIO);
-                $aErrores['inputSemanaOpcional'] = validacionFormularios::validarFecha($_REQUEST['inputSemanaOpcional']);
-                $aErrores['inputRangoObligatorio'] = validacionFormularios::comprobarEntero($_REQUEST['inputRangoObligatorio'], MAX_RANGO, MIN_RANGO, OBLIGATORIO);
-                $aErrores['inputRangoOpcional'] = validacionFormularios::comprobarEntero($_REQUEST['inputRangoOpcional'], MAX_RANGO, MIN_RANGO);
-                $aErrores['inputPasswordObligatorio'] = validacionFormularios::validarPassword($_REQUEST['inputPasswordObligatorio']);
                                 
                 /*
                  * Recorrido del array de errores.
@@ -291,14 +307,32 @@ Fecha de creación: 28/10/2021
                 $aFormulario['inputEnteroOpcional'] = $_REQUEST['inputEnteroOpcional'];
                 $aFormulario['inputFloatObligatorio'] = $_REQUEST['inputFloatObligatorio'];
                 $aFormulario['inputFloatOpcional'] = $_REQUEST['inputFloatOpcional'];
+                $aFormulario['inputTextareaObligatorio'] = $_REQUEST['inputTextareaObligatorio'];
+                $aFormulario['inputTextareaOpcional'] = $_REQUEST['inputTextareaOpcional'];
+                
                 $aFormulario['inputFechaObligatorio'] = $_REQUEST['inputFechaObligatorio'];
                 $aFormulario['inputFechaOpcional'] = $_REQUEST['inputFechaOpcional'];
                 $aFormulario['inputHoraObligatorio'] = $_REQUEST['inputHoraObligatorio'];
                 $aFormulario['inputHoraOpcional'] = $_REQUEST['inputHoraOpcional'];
                 $aFormulario['inputFechaHoraObligatorio'] = $_REQUEST['inputFechaHoraObligatorio'];
                 $aFormulario['inputFechaHoraOpcional'] = $_REQUEST['inputFechaHoraOpcional'];
-                $aFormulario['inputTextareaObligatorio'] = $_REQUEST['inputTextareaObligatorio'];
-                $aFormulario['inputTextareaOpcional'] = $_REQUEST['inputTextareaOpcional'];
+                $aFormulario['inputMesObligatorio'] = $_REQUEST['inputMesObligatorio'];
+                $aFormulario['inputMesOpcional'] = $_REQUEST['inputMesOpcional'];
+                $aFormulario['inputSemanaObligatorio'] = $_REQUEST['inputSemanaObligatorio'];
+                $aFormulario['inputSemanaOpcional'] = $_REQUEST['inputSemanaOpcional'];
+                
+                $aFormulario['inputTfnoObligatorio'] = $_REQUEST['inputTfnoObligatorio'];
+                $aFormulario['inputTfnoOpcional'] = $_REQUEST['inputTfnoOpcional'];
+                $aFormulario['inputCPObligatorio'] = $_REQUEST['inputCPObligatorio'];
+                $aFormulario['inputCPOpcional'] = $_REQUEST['inputCPOpcional'];
+                $aFormulario['inputEmailObligatorio'] = $_REQUEST['inputEmailObligatorio'];
+                $aFormulario['inputEmailOpcional'] = $_REQUEST['inputEmailOpcional'];
+                $aFormulario['inputUrlObligatorio'] = $_REQUEST['inputUrlObligatorio'];
+                $aFormulario['inputUrlOpcional'] = $_REQUEST['inputUrlOpcional'];
+                $aFormulario['inputRangoObligatorio'] = $_REQUEST['inputRangoObligatorio'];
+                $aFormulario['inputRangoOpcional'] = $_REQUEST['inputRangoOpcional'];
+                $aFormulario['inputPasswordObligatorio'] = $_REQUEST['inputPasswordObligatorio'];
+                
                 $aFormulario['inputListaDesplegableObligatorio'] = $_REQUEST['inputListaDesplegableObligatorio'];
                 $aFormulario['inputListaDesplegableOpcional'] = $_REQUEST['inputListaDesplegableOpcional'];
                 /*
@@ -311,21 +345,6 @@ Fecha de creación: 28/10/2021
                 $aFormulario['inputRadioOpcional'] = $_REQUEST['inputRadioOpcional']??'';
                 $aFormulario['inputCheckboxObligatorio'] = $_REQUEST['inputCheckboxObligatorio']??'';
                 $aFormulario['inputCheckboxOpcional'] = $_REQUEST['inputCheckboxOpcional']??'';
-                $aFormulario['inputTfnoObligatorio'] = $_REQUEST['inputTfnoObligatorio'];
-                $aFormulario['inputTfnoOpcional'] = $_REQUEST['inputTfnoOpcional'];
-                $aFormulario['inputCPObligatorio'] = $_REQUEST['inputCPObligatorio'];
-                $aFormulario['inputCPOpcional'] = $_REQUEST['inputCPOpcional'];
-                $aFormulario['inputEmailObligatorio'] = $_REQUEST['inputEmailObligatorio'];
-                $aFormulario['inputEmailOpcional'] = $_REQUEST['inputEmailOpcional'];
-                $aFormulario['inputUrlObligatorio'] = $_REQUEST['inputUrlObligatorio'];
-                $aFormulario['inputUrlOpcional'] = $_REQUEST['inputUrlOpcional'];
-                $aFormulario['inputMesObligatorio'] = $_REQUEST['inputMesObligatorio'];
-                $aFormulario['inputMesOpcional'] = $_REQUEST['inputMesOpcional'];
-                $aFormulario['inputSemanaObligatorio'] = $_REQUEST['inputSemanaObligatorio'];
-                $aFormulario['inputSemanaOpcional'] = $_REQUEST['inputSemanaOpcional'];
-                $aFormulario['inputRangoObligatorio'] = $_REQUEST['inputRangoObligatorio'];
-                $aFormulario['inputRangoOpcional'] = $_REQUEST['inputRangoOpcional'];
-                $aFormulario['inputPasswordObligatorio'] = $_REQUEST['inputPasswordObligatorio'];
                 
                 /*
                  * Mostrado del contenido de las variables
@@ -469,7 +488,7 @@ Fecha de creación: 28/10/2021
                                 <td><label for="inputSemanaOpcional">Semana opcional</label></td>
                                 <td><input type="week" name="inputSemanaOpcional" id="inputSemanaOpcional" value="<?php echo $_REQUEST['inputSemanaOpcional'] ?? '' ?>"></td>
                                 <td><?php echo '<span>' . $aErrores['inputSemanaOpcional'] . '</span>' ?></td>
-                            </tr>¡
+                            </tr>
                         </table>
                     </fieldset>
                     <fieldset>
@@ -658,14 +677,16 @@ Fecha de creación: 28/10/2021
                             </tr>
                         </table>
                     </fieldset>
-                    <input type="submit" name="submit" id="submit">
+                    <fieldset class='submit'>
+                        <input type="submit" name="submit" id="submit">
+                    </fieldset>
                 </form>
                 <?php
             }
             ?>
         </main>
         <footer>
-            <div>Modificado el 29/10/2021 - Mª Isabel Martínez Guerra</div>
+            <div>Modificado el 30/10/2021 - Mª Isabel Martínez Guerra</div>
         </footer>
     </body>
 </html>
