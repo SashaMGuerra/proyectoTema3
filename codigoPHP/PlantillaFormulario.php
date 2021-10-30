@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
-Autor: Isabel Martínez Guerra
-Fecha de creación: 28/10/2021
+    Autor: Isabel Martínez Guerra
+    Fecha de creación: 28/10/2021
 -->
 <html lang="es">
     <head>
@@ -94,18 +94,21 @@ Fecha de creación: 28/10/2021
              * Plantilla para formularios.
              * 
              */
+            
             //Librería de validación.
             include '../core/210322ValidacionFormularios.php';
 
-            //Definición de constatnes para el parámetro "obligatorio"
+            /*
+             * Definición de constantes para el parámetro "obligatorio"
+             */
             define("OBLIGATORIO", 1);
             define("OPCIONAL", 0);
-            define("MAX_TAMANIO_ALFA", 1000);
-            define("MIN_TAMANIO_ALFA", 1);
-            define("FECHA_MAXIMA", '01/01/2200');
-            define("FECHA_MINIMA", "01/01/1900");
-            define("MAX_RANGO", 5);
-            define("MIN_RANGO", 0);
+            define("MAX_TAMANIO_ALFA", 1000); //Tamaño máximo de los campos alfabético y alfanumérico.
+            define("MIN_TAMANIO_ALFA", 1); //Tamaño mínimo de los campos alfabético y alfanumérico.
+            define("FECHA_MAXIMA", '01/01/2200'); //Fecha máxima para los campos de fecha y hora.
+            define("FECHA_MINIMA", "01/01/1900"); //Fecha máxima para los campos de fecha y hora.
+            define("MAX_RANGO", 5); //Número máximo (incluido) para el input rango.
+            define("MIN_RANGO", 0); //Número mínimo (incluido) para el input rango.
 
             /*
              * Inicialización del array de elementos del formulario.
@@ -255,7 +258,7 @@ Fecha de creación: 28/10/2021
                 /*
                  * Dado que por defecto no hay ninguna opción elegida, y si no
                  * la hay el $_REQUEST no lo guarda y da error por índice indefinido,
-                 * requiere una comprobación si está definido el índica antes
+                 * requiere una comprobación si está definido el índice antes
                  * de validarse la entrada.
                  * Si no lo está, lleva a la validación una cadena vacía.
                  */
@@ -265,10 +268,10 @@ Fecha de creación: 28/10/2021
                  * Al igual que con los input radio, si no se elige la única
                  * opción, no la guarda en el $_REQUEST y da error por índice 
                  * indefinido.
+                 * 
                  * Comprueba si está definido antes de validar la entrada. Si no
                  * lo está, lleva a la validación una cadena vacía.
                  */
-                //$aErrores['inputCheckboxObligatorio'] = validacionFormularios::validarSeleccion($_REQUEST['inputCheckboxObligatorio']??'');
                 $aErrores['inputCheckboxObligatorio'] = validacionFormularios::validarSeleccion($_REQUEST['inputCheckboxObligatorio']??'');
                 $aErrores['inputCheckboxOpcional'] = validacionFormularios::validarSeleccion($_REQUEST['inputCheckboxOpcional']??'', OPCIONAL);
                                 
@@ -287,7 +290,8 @@ Fecha de creación: 28/10/2021
             /*
              * Si el formulario no ha sido enviado, pone el manejador de errores
              * a false para poder mostrar el formulario.
-             */ else {
+             */
+            else {
                 $bEntradaOK = false;
             }
 
@@ -363,11 +367,12 @@ Fecha de creación: 28/10/2021
             /*
              * Si el formulario no ha sido enviado o ha tenido errores
              * muestra el formulario.
-             */ else {
+             */
+            else {
 
                 /*
                  * Por cada input, el valor por defecto se inicializa al que tiene
-                 * $_REQUEST, si es que tiene alguna.
+                 * $_REQUEST, si es que tiene alguno.
                  * Si tiene algún error, lo muestra al lado del input.
                  */
                 ?>
@@ -433,12 +438,14 @@ Fecha de creación: 28/10/2021
                     </fieldset>
                     <fieldset>
                         <legend>Inputs de tiempo</legend>
+                        <?php
+                        /*
+                         * Los input relacionados con fechas diferentes a date
+                         * no son bien validados cuando son de tipo diferente
+                         * al que les corresponde.
+                         */
+                        ?>
                         <table>
-                            <!--
-                                Los input relacionados con fechas diferentes a date
-                                no son bien validados cuando son de tipo diferente
-                                al que les corresponde.
-                            -->
                             <tr>
                                 <td><label for="inputFechaObligatorio">Fecha obligatoria</label></td>
                                 <td><input class="inputObligatorio" type="date" name="inputFechaObligatorio" id="inputFechaObligatorio" value="<?php echo $_REQUEST['inputFechaObligatorio'] ?? '' ?>"></td>
@@ -493,12 +500,14 @@ Fecha de creación: 28/10/2021
                     </fieldset>
                     <fieldset>
                         <legend>Inputs de introducción de datos concretos</legend>
-                        <!--
-                            Inputs que se pueden realizar tanto con input text
-                            como con su propio modelo de input.
-                            Todos están probados con input text para comprobar
-                            su correcta validación en servidor.
-                        -->
+                        <?php
+                        /*
+                         * Inputs que se pueden realizar tanto con input text
+                         * como con su propio modelo de input.
+                         * 
+                         * Todos validan bien si se cambia su tipo a text.
+                         */
+                        ?>
                         <table>
                             <tr>
                                 <td><label for="inputTfnoObligatorio">Teléfono obligatorio</label></td>
@@ -540,11 +549,13 @@ Fecha de creación: 28/10/2021
                                 <td><input type="url" name="inputUrlOpcional" id="inputUrlOpcional" value="<?php echo $_REQUEST['inputUrlOpcional'] ?? '' ?>" placeholder="http://ejemplo.com"></td>
                                 <td><?php echo '<span>' . $aErrores['inputUrlOpcional'] . '</span>' ?></td>
                             </tr>
-                            <!--
-                                Los rangos tienen definido constantes para el máximo y el mínimo para su validación.
-                                Además, aquí en el input se le indica cuáles son también,
-                                para que el input no sea de 0 a 100, como es por defecto.
-                            -->
+                            <?php
+                            /*
+                             * Los rangos tienen definido constantes para el máximo y el mínimo para su validación.
+                             * Además, aquí en el input se le indica cuáles son también,
+                             * para que el input no sea de 0 a 100, como es por defecto.
+                             */
+                            ?>
                             <tr>
                                 <td><label for="inputRangoObligatorio">Rango obligatorio</label></td>
                                 <td><input class="inputObligatorio" type="range" name="inputRangoObligatorio" id="inputRangoObligatorio" max=<?php echo MAX_RANGO ?> min=<?php echo MIN_RANGO ?> value="<?php echo $_REQUEST['inputRangoObligatorio'] ?? '0' ?>"></td>
@@ -566,6 +577,16 @@ Fecha de creación: 28/10/2021
                         <legend>Inputs de selección de datos</legend>
                         <table>
                             <tr>
+                                <?php
+                                /*
+                                 * Si la variable está definida (si hay alguna elección hecha)
+                                 * comprueba cuál es la que está elegida, y si es esa,
+                                 * pone el input en selected.
+                                 * 
+                                 * Si no está definida, o no es esa la que lo está,
+                                 * no lo hace.
+                                 */
+                                ?>
                                 <td><label for="inputListaDesplegableObligatorio">Lista desplegable obligatoria</label></td>
                                 <td>
                                     <select class="inputObligatorio" name="inputListaDesplegableObligatorio" id="inputListaDesplegableObligatorio">
@@ -594,20 +615,20 @@ Fecha de creación: 28/10/2021
                                 <td><?php echo '<span>' . $aErrores['inputListaDesplegableOpcional'] . '</span>' ?></td>
                             </tr>
                             <tr>
+                                <?php
+                                /*
+                                 * Al igual que en el anterior, se comprueba si hay alguna elección hecha
+                                 * y si la hay, comprueba si corresponde, y si lo hace, pone el input en checked.
+                                 */
+                                ?>
                                 <td>Input radio obligatorio</td>
                                 <td class="inputObligatorio">
                                     <input type="radio" id="inputRadioObligatorioOpcion1" name="inputRadioObligatorio" value="inputRadioObligatorioOpcion1" <?php
-                                    if (isset($_REQUEST['inputRadioObligatorio'])) {
-                                        echo ($_REQUEST['inputRadioObligatorio'] == 'inputRadioObligatorioOpcion1' ? 'checked' : '');
-                                    }
-                                    ?>>
+                                    echo isset($_REQUEST['inputRadioObligatorio'])?($_REQUEST['inputRadioObligatorio'] == 'inputRadioObligatorioOpcion1' ? 'checked' : ''):''; ?>>
                                     <label for="inputRadioObligatorioOpcion1">Opción 1</label>
                                     
                                     <input type="radio" id="inputRadioObligatorioOpcion2" name="inputRadioObligatorio" value="inputRadioObligatorioOpcion2" <?php
-                                    if (isset($_REQUEST['inputRadioObligatorio'])) {
-                                        echo ($_REQUEST['inputRadioObligatorio'] == 'inputRadioObligatorioOpcion2' ? 'checked' : '');
-                                    }
-                                    ?>>
+                                    echo isset($_REQUEST['inputRadioObligatorio'])?($_REQUEST['inputRadioObligatorio'] == 'inputRadioObligatorioOpcion2' ? 'checked' : ''):''; ?>>
                                     <label for="inputRadioObligatorioOpcion2">Opción 2</label>
                                 </td>
                                 <td><?php echo '<span>' . $aErrores['inputRadioObligatorio'] . '</span>' ?></td>
@@ -615,48 +636,28 @@ Fecha de creación: 28/10/2021
                             <tr>
                                 <td>Input radio opcional</td>
                                 <td>
-                                    <?php
-                                    /*
-                                     * Si la variable está definida (si hay alguna elección hecha)
-                                     * comprueba cuál es la que está elegida, y si es esa,
-                                     * pone el input en checked.
-                                     * 
-                                     * Si no está definida, o no es esa la que lo está,
-                                     * no lo hace.
-                                     */
-                                    ?>
                                     <input type="radio" id="inputRadioOpcionalOpcion1" name="inputRadioOpcional" value="inputRadioOpcionalOpcion1" <?php
-                                    if (isset($_REQUEST['inputRadioOpcional'])) {
-                                        echo ($_REQUEST['inputRadioOpcional'] == 'inputRadioOpcionalOpcion1' ? 'checked' : '');
-                                    }
-                                    ?>>
+                                    echo isset($_REQUEST['inputRadioOpcional'])?($_REQUEST['inputRadioOpcional'] == 'inputRadioOpcionalOpcion1' ? 'checked' : ''):''; ?>>
                                     <label for="inputRadioOpcionalOpcion1">Opción 1</label>
 
                                     <input type="radio" id="inputRadioOpcionalOpcion2" name="inputRadioOpcional" value="inputRadioOpcionalOpcion2" <?php
-                                    if (isset($_REQUEST['inputRadioOpcional'])) {
-                                        echo ($_REQUEST['inputRadioOpcional'] == 'inputRadioOpcionalOpcion2' ? 'checked' : '');
-                                    }
-                                    ?>>
+                                    echo isset($_REQUEST['inputRadioOpcional'])?($_REQUEST['inputRadioOpcional'] == 'inputRadioOpcionalOpcion2' ? 'checked' : ''):''; ?>>
                                     <label for="inputRadioOpcionalOpcion2">Opción 2</label>
                                 </td>
                                 <td><?php echo '<span>' . $aErrores['inputRadioOpcional'] . '</span>' ?></td>
                             </tr>
                             <tr>
+                                <?php
+                                /*
+                                 * Similar a los anteriores, comprueba si la variable está definida
+                                 * (si se ha checado el checkbox), y si se ha hecho, lo pone en checked.
+                                 * Si no, no lo hace.
+                                 */
+                                ?>
                                 <td>Input checkbox obligatorio</td>
                                 <td class="inputObligatorio">
-                                    <?php
-                                    /*
-                                     * Si la variable está definida (el checkbox está checado)
-                                     * y no está vacía, pone el input en checked.
-                                     */
-                                    ?>
                                     <input type="checkbox" id="inputCheckboxObligatorio" name="inputCheckboxObligatorio" value="checkboxObligatorio" <?php
-                                    if(isset($_REQUEST['inputCheckboxObligatorio'])){
-                                        if($_REQUEST['inputCheckboxObligatorio']!=''){
-                                            echo 'checked';
-                                        }
-                                    }
-                                    ?>>
+                                    echo isset($_REQUEST['inputCheckboxObligatorio'])?($_REQUEST['inputCheckboxObligatorio']!=''?'checked':''):''; ?>>
                                     <label for="inputCheckboxObligatorio">Opción</label>
                                 </td>
                                 <td><?php echo '<span>' . $aErrores['inputCheckboxObligatorio'] . '</span>' ?></td>
@@ -665,12 +666,7 @@ Fecha de creación: 28/10/2021
                                 <td>Input checkbox opcional</td>
                                 <td>
                                     <input type="checkbox" id="inputCheckboxOpcional" name="inputCheckboxOpcional" value="checkboxOpcional" <?php
-                                    if(isset($_REQUEST['inputCheckboxOpcional'])){
-                                        if($_REQUEST['inputCheckboxOpcional']!=''){
-                                            echo 'checked';
-                                        }
-                                    }
-                                    ?>>
+                                    echo isset($_REQUEST['inputCheckboxOpcional'])?($_REQUEST['inputCheckboxOpcional']!=''?'checked':''):''; ?>>
                                     <label for="inputCheckboxOpcional">Opción</label>
                                 </td>
                                 <td><?php echo '<span>' . $aErrores['inputCheckboxOpcional'] . '</span>' ?></td>
