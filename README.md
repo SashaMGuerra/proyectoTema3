@@ -1,8 +1,7 @@
-# PROYECTO TEMA 3
-# Asignatura DWES
+# Asignatura DWES - Proyecto Tema 3
 Proyecto que contiene todas las prácticas de PHP del Tema 3.
 
-# Lenguajes utilizados:
+## Lenguajes utilizados:
 * HTML
 * CSS
 * PHP 7.4
