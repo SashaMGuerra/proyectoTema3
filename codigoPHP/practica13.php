@@ -44,6 +44,11 @@ Fecha de creación: 19/10/2021
                 $gestor = fopen($sFile, 'r+');
                 fseek($gestor, 0);
                 
+                /*
+                 * fread no funciona
+                 * https://drib.tech/programming/php-file_get_contents-not-working
+                 */
+                
                 // Lectura del fichero. Devuelve un string con la información.
                 $iVisitas = intval(fread($gestor, filesize($sFile)));
                 var_dump($iVisitas);
