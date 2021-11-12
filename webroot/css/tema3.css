@@ -27,6 +27,8 @@ div{
 
 
 table{
+    margin: auto;
+    max-width: 1200px;
     width: 100%;
     text-align: center;
 }
