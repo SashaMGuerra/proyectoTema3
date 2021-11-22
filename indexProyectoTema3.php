@@ -149,12 +149,12 @@
                     <td><a href="mostrarcodigo/mostrarPractica23.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
                 <tr>
-                    <td class="cambiar">24. Formulario: y mostrar en la misma página las preguntas y las respuestas recogidas; en el caso de que alguna respuesta esté vacía o errónea volverá a salir el formulario con el mensaje correspondiente, pero las respuestas que habíamos tecleado correctamente aparecerán en el formulario y no tendremos que volver a teclearlas</td>
+                    <td>24. Formulario: y mostrar en la misma página las preguntas y las respuestas recogidas; en el caso de que alguna respuesta esté vacía o errónea volverá a salir el formulario con el mensaje correspondiente, pero las respuestas que habíamos tecleado correctamente aparecerán en el formulario y no tendremos que volver a teclearlas</td>
                     <td><a href="codigoPHP/practica24.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
                     <td><a href="mostrarcodigo/mostrarPractica24.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
                 <tr>
-                    <td class="cambiar">25. Trabajar en PlantillaFormulario.php mi plantilla para hacer formularios como churros</td>
+                    <td>25. Trabajar en PlantillaFormulario.php mi plantilla para hacer formularios como churros</td>
                     <td><a href="codigoPHP/PlantillaFormulario.php"><img class="exe" src="webroot/media/img/execute-icon.jpg" alt="run"/></a></td>
                     <td><a href="mostrarcodigo/mostrarPractica25.php"><img class="exe" src="webroot/media/img/doc_icon.png" alt="show"/></a></td>
                 </tr>
