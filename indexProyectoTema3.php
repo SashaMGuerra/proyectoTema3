@@ -8,11 +8,13 @@
         <title>DAW2</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="webroot/css/common.css" rel="stylesheet" type="text/css"/>
-        <link href="webroot/css/tema3.css" rel="stylesheet" type="text/css"/>
+        <link href="webroot/css/commonTema3.css" rel="stylesheet" type="text/css"/>
+        <link href="webroot/css/indexTema3.css" rel="stylesheet" type="text/css"/>
+        
     </head>
     <body>
         <header>
+            <a class="volver" href="../proyectoDWES/indexProyectoDWES.php">Volver</a>
             <h1>Desarrollo Web en Entorno Servidor</h1>
             <h2>Proyecto Tema 3</h2>
         </header>
@@ -161,10 +163,7 @@
                 
             </table>
         </main>
-        <footer>
-            <div>Modificado el 26/10/2021 - Mª Isabel Martínez Guerra</div>
-            <div><a href="https://github.com/SashaMGuerra/proyectoTema3"><img id="github" src="webroot/media/img/github_logo_white.png" alt="github logo"/></a></div>
-        </footer>
+        <?php include_once './codigoPHP/elementoFooter.php'; // Footer ?>
     </body>
 </html>
 

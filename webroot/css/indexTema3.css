@@ -1,0 +1,32 @@
+/* 
+    Created on : 22 nov. 2021, 17:08:24
+    Author     : Sasha
+*/
+
+
+
+body{
+    font-family: sans-serif;
+}
+header{
+    margin: 15px 0;
+}
+
+table img{
+    width: 60px;
+}
+table{
+    margin: auto;
+    max-width: 1200px;
+}
+table tr td:first-child{
+    padding: 0 10px;
+    border: 1px solid gainsboro;
+}
+
+.noaun{
+    color: gray;
+}
+.porhacer{
+    color: red;
+}

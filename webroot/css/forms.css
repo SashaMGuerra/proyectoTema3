@@ -1,16 +1,54 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
 /* 
-    Created on : 22 oct. 2021, 10:11:03
+    Created on : 22 nov. 2021, 17:21:34
     Author     : Sasha
 */
 
-h1, h2{
-    text-align: center;
+form{
+    margin: 20px auto;
+    width: fit-content;
+    max-width: 800px;
 }
-h2{
-    font-size: medium;
+table{
+    width: 100%;
+    table-layout: fixed;
+}
+
+form ul{
+    list-style: none;
+}
+li label{
+    margin-left: 5px;
+}
+
+label.obligatorio:after, td.obligatorio:after{
+    content: "*";
+    color: red;
+}
+input.obligatorio{
+    background-color: mistyrose;
+}
+
+textarea{
+    width: 100%;
+    resize: vertical;
+    margin-bottom: 5px;
+    width: 95%;
+}
+
+fieldset.submit{
+    margin-bottom: 0;
+    text-align: right;
+    border: none;
+}
+input[type="submit"]{
+    font-variant: small-caps;
+
+}
+
+/*span de errores*/
+span{
+    font-weight: normal;
+    font-size: small;
+    color: red;
+
 }

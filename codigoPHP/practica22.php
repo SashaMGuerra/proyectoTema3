@@ -7,13 +7,16 @@ Fecha de creación: 21/10/2021
     <head>
         <meta charset="UTF-8">
         <title>IMG - DWES 3 - 22</title>
+        <link href="../webroot/css/commonTema3.css" rel="stylesheet" type="text/css"/>
         <link href="../webroot/css/forms.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <header>
+            <?php include_once './elementoBtVolver.php'; ?>
             <h1>Formulario del ejercicio 22</h1>
             <h2>Enviado el formulario, mostrará la información con que se ha rellenado</h2>
         </header>
+        <main>
         <?php
         /**
          * Fecha de creación: 21/10/2021
@@ -52,28 +55,13 @@ Fecha de creación: 21/10/2021
             <input type="text" id="name" name="name">
             <label for="age">Edad: </label>
             <input type="number" id="age" name="age">
-
-            <!--
-            <ul>
-                <li>
-                    <label for="male">Hombre</label>
-                    <input type="radio" id="male" name="sex">
-                </li>
-                <li>
-                    <label for="female">Mujer</label>
-                    <input type="radio" id="female" name="sex">
-
-                </li>
-            </ul>
-            <label for="birthday">Fecha de nacimiento: </label>
-            <input type="date" id="birthday" name="birthday">
-            
-            -->
             <input type="submit" name="submit" value="Enviar">
             
         </form>
             <?php
             }
             ?>
+        </main>
+        <?php include_once './elementoFooter.php'; // Footer ?>
     </body>
 </html>
