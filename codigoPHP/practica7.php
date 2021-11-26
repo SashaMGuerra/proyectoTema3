@@ -7,25 +7,28 @@ Fecha de creación: 18/10/2021
     <head>
         <meta charset="UTF-8">
         <title>IMG - DWES 3 - 7</title>
-        <style>
-            span{
-                font-weight: bold;
-            }
-        </style>
+        <link href="../webroot/css/commonTema3.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <?php
-        /**
-         * Fecha de creación: 18/10/2021
-         * Fecha de última modificación: 18/10/2021
-         * 
-         * Mostrar nombre del fichero actual.
-         */
-        
-        $scriptName= $_SERVER['SCRIPT_NAME'];
+        <header>
+            <?php include_once './elementoBtVolver.php'; ?>
+        </header>
+        <main>
+            <?php
+            /**
+             * @since 18/10/2021
+             * Fecha de última modificación: 18/10/2021
+             * 
+             * Mostrar nombre del fichero actual.
+             */
 
-        echo "Se está ejecutando el fichero <span>$scriptName</span>.";
-        
-        ?>
+            $scriptName= $_SERVER['SCRIPT_NAME'];
+
+            echo "Se está ejecutando el fichero <span>$scriptName</span>.";
+
+            ?>
+            
+        </main>
+        <?php include_once './elementoFooter.php'; // Footer ?>
     </body>
 </html>

@@ -11,7 +11,7 @@ Fecha de creación:
     <body>
         <?php
         /**
-         * Fecha de creación:
+         * @since
          * Fecha de modificación:
          */
             highlight_file("../codigoPHP/practica1.php");

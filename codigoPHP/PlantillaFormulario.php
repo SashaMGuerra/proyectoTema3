@@ -7,26 +7,15 @@
     <head>
         <meta charset="UTF-8">
         <title>IMG - Plantilla Formulario</title>
-        <link href="../webroot/css/common.css" rel="stylesheet" type="text/css"/>
+        <link href="../webroot/css/commonTema3.css" rel="stylesheet" type="text/css"/>
+        <link href="../webroot/css/forms.css" rel="stylesheet" type="text/css"/>
         <style>
-            /*Modificación general de la cabecera y footer*/
-            h2{
-                text-align: center;
-            }
-            footer{
-                position: static;
+            header{
+                margin-top: 10px;
+                font-family: sans-serif;
             }
             
             /*Formato del formulario*/
-            table{
-                table-layout: fixed;
-                margin: auto;
-                width: 100%;
-            }
-            span{
-                color: red;
-                font-size: small;
-            }
             tr:nth-child(even) td:first-child{
                 border-bottom: 1px solid lightsteelblue;
             }
@@ -35,36 +24,16 @@
                 border: 2px lightsteelblue groove;
             }
             legend{
-                font-variant: small-caps;
-                text-align: center;
+                text-transform: uppercase;
                 border: 2px lightsteelblue groove;
                 padding: 3px;
-            }
-            fieldset.submit{
-                border: none;
-                padding: 0;
-                text-align: center;
-            }
-            input[type='submit']{
-                font-variant: small-caps;
-            }
-            /*Bloqueo del ancho del textarea*/
-            textarea{
-                width: 95%;
-                resize: vertical;
-            }
-            
-            /*Formato de campos obligatorios*/
-            .inputObligatorio{
-                background: lightsteelblue;
-            }
-            input:hover{
-                background-color: gainsboro;
             }
             
             /*Formato de la tabla de la información enviada*/
             table.showVariables{
-                width: 95%;
+                width: 100%;
+                max-width: 800px;
+                margin: auto;
                 border-collapse: collapse;
                 border: 1px solid gainsboro;
             }
@@ -81,12 +50,13 @@
     </head>
     <body>
         <header>
+            <?php include_once './elementoBtVolver.php'; // Footer ?>
             <h1>Plantilla de formulario</h1>
         </header>
         <main>
             <?php
             /**
-             * Fecha de creación: 28/10/2021
+             * @since 28/10/2021
              * Fecha de última modificación: 30/10/2021
              * @version 1.0
              * @author Sasha
@@ -131,10 +101,6 @@
                 'inputHoraOpcional' => '',
                 'inputFechaHoraObligatorio' => '',
                 'inputFechaHoraOpcional' => '',
-                'inputMesObligatorio' => '',
-                'inputMesOpcional' => '',
-                'inputSemanaObligatorio' => '',
-                'inputSemanaOpcional' => '',
                 
                 'inputTfnoObligatorio' => '',
                 'inputTfnoOpcional' => '',
@@ -177,10 +143,6 @@
                 'inputHoraOpcional' => '',
                 'inputFechaHoraObligatorio' => '',
                 'inputFechaHoraOpcional' => '',
-                'inputMesObligatorio' => '',
-                'inputMesOpcional' => '',
-                'inputSemanaObligatorio' => '',
-                'inputSemanaOpcional' => '',
                 
                 'inputTfnoObligatorio' => '',
                 'inputTfnoOpcional' => '',
@@ -236,10 +198,6 @@
                 $aErrores['inputHoraOpcional'] = validacionFormularios::validarFecha($_REQUEST['inputHoraOpcional']);
                 $aErrores['inputFechaHoraObligatorio'] = validacionFormularios::validarFecha($_REQUEST['inputFechaHoraObligatorio'], FECHA_MAXIMA, FECHA_MINIMA, OBLIGATORIO);
                 $aErrores['inputFechaHoraOpcional'] = validacionFormularios::validarFecha($_REQUEST['inputFechaHoraOpcional']);
-                $aErrores['inputMesObligatorio'] = validacionFormularios::validarFecha($_REQUEST['inputMesObligatorio'], FECHA_MAXIMA, FECHA_MINIMA, OBLIGATORIO);
-                $aErrores['inputMesOpcional'] = validacionFormularios::validarFecha($_REQUEST['inputMesOpcional']);
-                $aErrores['inputSemanaObligatorio'] = validacionFormularios::validarFecha($_REQUEST['inputSemanaObligatorio'], FECHA_MAXIMA, FECHA_MINIMA, OBLIGATORIO);
-                $aErrores['inputSemanaOpcional'] = validacionFormularios::validarFecha($_REQUEST['inputSemanaOpcional']);
                 
                 $aErrores['inputTfnoObligatorio'] = validacionFormularios::validarTelefono($_REQUEST['inputTfnoObligatorio'], OBLIGATORIO);
                 $aErrores['inputTfnoOpcional'] = validacionFormularios::validarTelefono($_REQUEST['inputTfnoOpcional']);
@@ -320,10 +278,6 @@
                 $aFormulario['inputHoraOpcional'] = $_REQUEST['inputHoraOpcional'];
                 $aFormulario['inputFechaHoraObligatorio'] = $_REQUEST['inputFechaHoraObligatorio'];
                 $aFormulario['inputFechaHoraOpcional'] = $_REQUEST['inputFechaHoraOpcional'];
-                $aFormulario['inputMesObligatorio'] = $_REQUEST['inputMesObligatorio'];
-                $aFormulario['inputMesOpcional'] = $_REQUEST['inputMesOpcional'];
-                $aFormulario['inputSemanaObligatorio'] = $_REQUEST['inputSemanaObligatorio'];
-                $aFormulario['inputSemanaOpcional'] = $_REQUEST['inputSemanaOpcional'];
                 
                 $aFormulario['inputTfnoObligatorio'] = $_REQUEST['inputTfnoObligatorio'];
                 $aFormulario['inputTfnoOpcional'] = $_REQUEST['inputTfnoOpcional'];
@@ -381,8 +335,8 @@
                         <legend>Inputs de introducción de datos</legend>
                         <table>
                             <tr>
-                                <td><label for="inputAlfanumericoObligatorio">Alfanumérico obligatorio</label></td>
-                                <td><input class="inputObligatorio" type="text" name="inputAlfanumericoObligatorio" id="inputAlfanumericoObligatorio" value="<?php echo $_REQUEST['inputAlfanumericoObligatorio'] ?? '' ?>"></td>
+                                <td><label class="obligatorio" for="inputAlfanumericoObligatorio">Alfanumérico obligatorio</label></td>
+                                <td><input class="obligatorio" type="text" name="inputAlfanumericoObligatorio" id="inputAlfanumericoObligatorio" value="<?php echo $_REQUEST['inputAlfanumericoObligatorio'] ?? '' ?>"></td>
                                 <td><?php echo '<span>' . $aErrores['inputAlfanumericoObligatorio'] . '</span>' ?></td>
                             </tr>
                             <tr>
@@ -391,8 +345,8 @@
                                 <td><?php echo '<span>' . $aErrores['inputAlfanumericoOpcional'] . '</span>' ?></td>
                             </tr>
                             <tr>
-                                <td><label for="inputAlfabeticoObligatorio">Alfabético obligatorio</label></td>
-                                <td><input class="inputObligatorio" type="text" name="inputAlfabeticoObligatorio" id="inputAlfabeticoObligatorio" value="<?php echo $_REQUEST['inputAlfabeticoObligatorio'] ?? '' ?>"></td>
+                                <td><label class="obligatorio" for="inputAlfabeticoObligatorio">Alfabético obligatorio</label></td>
+                                <td><input class="obligatorio" type="text" name="inputAlfabeticoObligatorio" id="inputAlfabeticoObligatorio" value="<?php echo $_REQUEST['inputAlfabeticoObligatorio'] ?? '' ?>"></td>
                                 <td><?php echo '<span>' . $aErrores['inputAlfabeticoObligatorio'] . '</span>' ?></td>
                             </tr>
                             <tr>
@@ -401,8 +355,8 @@
                                 <td><?php echo '<span>' . $aErrores['inputAlfabeticoOpcional'] . '</span>' ?></td>
                             </tr>
                             <tr>
-                                <td><label for="inputEnteroObligatorio">Entero obligatorio</label></td>
-                                <td><input class="inputObligatorio" type="number" name="inputEnteroObligatorio" id="inputEnteroObligatorio" value="<?php echo $_REQUEST['inputEnteroObligatorio'] ?? '' ?>"></td>
+                                <td><label class="obligatorio" for="inputEnteroObligatorio">Entero obligatorio</label></td>
+                                <td><input class="obligatorio" type="number" name="inputEnteroObligatorio" id="inputEnteroObligatorio" value="<?php echo $_REQUEST['inputEnteroObligatorio'] ?? '' ?>"></td>
                                 <td><?php echo '<span>' . $aErrores['inputEnteroObligatorio'] . '</span>' ?></td>
                             </tr>
                             <tr>
@@ -411,8 +365,8 @@
                                 <td><?php echo '<span>' . $aErrores['inputEnteroOpcional'] . '</span>' ?></td>
                             </tr>
                             <tr>
-                                <td><label for="inputFloatObligatorio">Float obligatorio</label></td>
-                                <td><input class="inputObligatorio" type="text" name="inputFloatObligatorio" id="inputFloatObligatorio" value="<?php echo $_REQUEST['inputFloatObligatorio'] ?? '' ?>" placeholder="Ej.: 1.75"></td>
+                                <td><label class="obligatorio" for="inputFloatObligatorio">Float obligatorio</label></td>
+                                <td><input class="obligatorio" type="text" name="inputFloatObligatorio" id="inputFloatObligatorio" value="<?php echo $_REQUEST['inputFloatObligatorio'] ?? '' ?>" placeholder="Ej.: 1.75"></td>
                                 <td><?php echo '<span>' . $aErrores['inputFloatObligatorio'] . '</span>' ?></td>
                             </tr>
                             <tr>
@@ -421,9 +375,9 @@
                                 <td><?php echo '<span>' . $aErrores['inputFloatOpcional'] . '</span>' ?></td>
                             </tr>
                             <tr>
-                                <td><label for="inputTextareaObligatorio">Textarea obligatoria</label></td>
+                                <td><label class="obligatorio" for="inputTextareaObligatorio">Textarea obligatoria</label></td>
                                 <td>
-                                    <textarea class="inputObligatorio" name="inputTextareaObligatorio" id="inputTextareaObligatorio" placeholder="Introduzca texto"><?php echo $_REQUEST['inputTextareaObligatorio'] ?? '' ?></textarea>
+                                    <textarea class="obligatorio" name="inputTextareaObligatorio" id="inputTextareaObligatorio" placeholder="Introduzca texto"><?php echo $_REQUEST['inputTextareaObligatorio'] ?? '' ?></textarea>
                                 </td>
                                 <td><?php echo '<span>' . $aErrores['inputTextareaObligatorio'] . '</span>' ?></td>
                             </tr>
@@ -447,8 +401,8 @@
                         ?>
                         <table>
                             <tr>
-                                <td><label for="inputFechaObligatorio">Fecha obligatoria</label></td>
-                                <td><input class="inputObligatorio" type="date" name="inputFechaObligatorio" id="inputFechaObligatorio" value="<?php echo $_REQUEST['inputFechaObligatorio'] ?? '' ?>"></td>
+                                <td><label class="obligatorio" for="inputFechaObligatorio">Fecha obligatoria</label></td>
+                                <td><input class="obligatorio" type="date" name="inputFechaObligatorio" id="inputFechaObligatorio" value="<?php echo $_REQUEST['inputFechaObligatorio'] ?? '' ?>"></td>
                                 <td><?php echo '<span>' . $aErrores['inputFechaObligatorio'] . '</span>' ?></td>
                             </tr>
                             <tr>
@@ -457,8 +411,8 @@
                                 <td><?php echo '<span>' . $aErrores['inputFechaOpcional'] . '</span>' ?></td>
                             </tr>
                             <tr>
-                                <td><label for="inputHoraObligatorio">Hora obligatoria</label></td>
-                                <td><input class="inputObligatorio" type="time" name="inputHoraObligatorio" id="inputHoraObligatorio" value="<?php echo $_REQUEST['inputHoraObligatorio']??'' ?>"></td>
+                                <td><label class="obligatorio" for="inputHoraObligatorio">Hora obligatoria</label></td>
+                                <td><input class="obligatorio" type="time" name="inputHoraObligatorio" id="inputHoraObligatorio" value="<?php echo $_REQUEST['inputHoraObligatorio']??'' ?>"></td>
                                 <td><?php echo '<span>' . $aErrores['inputHoraObligatorio'] . '</span>' ?></td>
                             </tr>
                             <tr>
@@ -467,34 +421,14 @@
                                 <td><?php echo '<span>' . $aErrores['inputHoraOpcional'] . '</span>' ?></td>
                             </tr>
                             <tr>
-                                <td><label for="inputFechaHoraObligatorio">Fecha-hora obligatoria</label></td>
-                                <td><input class="inputObligatorio" type="datetime-local" name="inputFechaHoraObligatorio" id="inputFechaHoraObligatorio" value="<?php echo $_REQUEST['inputFechaHoraObligatorio'] ?? '' ?>"></td>
+                                <td><label class="obligatorio" for="inputFechaHoraObligatorio">Fecha-hora obligatoria</label></td>
+                                <td><input class="obligatorio" type="datetime-local" name="inputFechaHoraObligatorio" id="inputFechaHoraObligatorio" value="<?php echo $_REQUEST['inputFechaHoraObligatorio'] ?? '' ?>"></td>
                                 <td><?php echo '<span>' . $aErrores['inputFechaHoraObligatorio'] . '</span>' ?></td>
                             </tr>
                             <tr>
                                 <td><label for="inputFechaHoraOpcional">Fecha-hora opcional</label></td>
                                 <td><input type="datetime-local" name="inputFechaHoraOpcional" id="inputFechaHoraOpcional" value="<?php echo $_REQUEST['inputFechaHoraOpcional'] ?? '' ?>"></td>
                                 <td><?php echo '<span>' . $aErrores['inputFechaHoraOpcional'] . '</span>' ?></td>
-                            </tr>
-                            <tr>
-                                <td><label for="inputMesObligatorio">Mes obligatorio</label></td>
-                                <td><input class="inputObligatorio" type="month" name="inputMesObligatorio" id="inputMesObligatorio" value="<?php echo $_REQUEST['inputMesObligatorio'] ?? '' ?>"></td>
-                                <td><?php echo '<span>' . $aErrores['inputMesObligatorio'] . '</span>' ?></td>
-                            </tr>
-                            <tr>
-                                <td><label for="inputMesOpcional">Mes opcional</label></td>
-                                <td><input type="month" name="inputMesOpcional" id="inputMesOpcional" value="<?php echo $_REQUEST['inputMesOpcional'] ?? '' ?>"></td>
-                                <td><?php echo '<span>' . $aErrores['inputMesOpcional'] . '</span>' ?></td>
-                            </tr>
-                            <tr>
-                                <td><label for="inputSemanaObligatorio">Semana obligatoria</label></td>
-                                <td><input class="inputObligatorio" type="week" name="inputSemanaObligatorio" id="inputSemanaObligatorio" value="<?php echo $_REQUEST['inputSemanaObligatorio'] ?? '' ?>"></td>
-                                <td><?php echo '<span>' . $aErrores['inputSemanaObligatorio'] . '</span>' ?></td>
-                            </tr>
-                            <tr>
-                                <td><label for="inputSemanaOpcional">Semana opcional</label></td>
-                                <td><input type="week" name="inputSemanaOpcional" id="inputSemanaOpcional" value="<?php echo $_REQUEST['inputSemanaOpcional'] ?? '' ?>"></td>
-                                <td><?php echo '<span>' . $aErrores['inputSemanaOpcional'] . '</span>' ?></td>
                             </tr>
                         </table>
                     </fieldset>
@@ -510,18 +444,18 @@
                         ?>
                         <table>
                             <tr>
-                                <td><label for="inputTfnoObligatorio">Teléfono obligatorio</label></td>
-                                <td><input class="inputObligatorio" type="tel" name="inputTfnoObligatorio" id="inputTfnoObligatorio" value="<?php echo $_REQUEST['inputTfnoObligatorio'] ?? '' ?>" placeholder="987654321"></td>
+                                <td><label class="obligatorio" for="inputTfnoObligatorio">Teléfono obligatorio</label></td>
+                                <td><input class="obligatorio" type="tel" name="inputTfnoObligatorio" id="inputTfnoObligatorio" value="<?php echo $_REQUEST['inputTfnoObligatorio'] ?? '' ?>" placeholder="987654321"></td>
                                 <td><?php echo '<span>' . $aErrores['inputTfnoObligatorio'] . '</span>' ?></td>
                             </tr>
                             <tr>
-                                <td><label for="inputTfnoOpcional">Teléfono obligatorio</label></td>
+                                <td><label for="inputTfnoOpcional">Teléfono opcional</label></td>
                                 <td><input type="tel" name="inputTfnoOpcional" id="inputTfnoOpcional" value="<?php echo $_REQUEST['inputTfnoOpcional'] ?? '' ?>" placeholder="987654321"></td>
                                 <td><?php echo '<span>' . $aErrores['inputTfnoOpcional'] . '</span>' ?></td>
                             </tr>
                             <tr>
-                                <td><label for="inputCPObligatorio">Código postal obligatorio</label></td>
-                                <td><input class="inputObligatorio" type="text" name="inputCPObligatorio" id="inputCPObligatorio" value="<?php echo $_REQUEST['inputCPObligatorio'] ?? '' ?>" placeholder="00000"></td>
+                                <td><label class="obligatorio" for="inputCPObligatorio">Código postal obligatorio</label></td>
+                                <td><input class="obligatorio" type="text" name="inputCPObligatorio" id="inputCPObligatorio" value="<?php echo $_REQUEST['inputCPObligatorio'] ?? '' ?>" placeholder="00000"></td>
                                 <td><?php echo '<span>' . $aErrores['inputCPObligatorio'] . '</span>' ?></td>
                             </tr>
                             <tr>
@@ -530,8 +464,8 @@
                                 <td><?php echo '<span>' . $aErrores['inputCPOpcional'] . '</span>' ?></td>
                             </tr>
                             <tr>
-                                <td><label for="inputEmailObligatorio">Email obligatorio</label></td>
-                                <td><input class="inputObligatorio" type="email" name="inputEmailObligatorio" id="inputEmailObligatorio" value="<?php echo $_REQUEST['inputEmailObligatorio'] ?? '' ?>" placeholder='mail@ejemplo.com'></td>
+                                <td><label class="obligatorio" for="inputEmailObligatorio">Email obligatorio</label></td>
+                                <td><input class="obligatorio" type="email" name="inputEmailObligatorio" id="inputEmailObligatorio" value="<?php echo $_REQUEST['inputEmailObligatorio'] ?? '' ?>" placeholder='mail@ejemplo.com'></td>
                                 <td><?php echo '<span>' . $aErrores['inputEmailObligatorio'] . '</span>' ?></td>
                             </tr>
                             <tr>
@@ -540,8 +474,8 @@
                                 <td><?php echo '<span>' . $aErrores['inputEmailOpcional'] . '</span>' ?></td>
                             </tr>
                             <tr>
-                                <td><label for="inputUrlObligatorio">Enlace obligatorio</label></td>
-                                <td><input class="inputObligatorio" type="url" name="inputUrlObligatorio" id="inputUrlObligatorio" value="<?php echo $_REQUEST['inputUrlObligatorio'] ?? '' ?>" placeholder="http://ejemplo.com"></td>
+                                <td><label class="obligatorio" for="inputUrlObligatorio">Enlace obligatorio</label></td>
+                                <td><input class="obligatorio" type="url" name="inputUrlObligatorio" id="inputUrlObligatorio" value="<?php echo $_REQUEST['inputUrlObligatorio'] ?? '' ?>" placeholder="http://ejemplo.com"></td>
                                 <td><?php echo '<span>' . $aErrores['inputUrlObligatorio'] . '</span>' ?></td>
                             </tr>
                             <tr>
@@ -557,8 +491,8 @@
                              */
                             ?>
                             <tr>
-                                <td><label for="inputRangoObligatorio">Rango obligatorio</label></td>
-                                <td><input class="inputObligatorio" type="range" name="inputRangoObligatorio" id="inputRangoObligatorio" max=<?php echo MAX_RANGO ?> min=<?php echo MIN_RANGO ?> value="<?php echo $_REQUEST['inputRangoObligatorio'] ?? '0' ?>"></td>
+                                <td><label class="obligatorio" for="inputRangoObligatorio">Rango obligatorio</label></td>
+                                <td><input class="obligatorio" type="range" name="inputRangoObligatorio" id="inputRangoObligatorio" max=<?php echo MAX_RANGO ?> min=<?php echo MIN_RANGO ?> value="<?php echo $_REQUEST['inputRangoObligatorio'] ?? '0' ?>"></td>
                                 <td><?php echo '<span>' . $aErrores['inputRangoObligatorio'] . '</span>' ?></td>
                             </tr>
                             <tr>
@@ -567,8 +501,8 @@
                                 <td><?php echo '<span>' . $aErrores['inputRangoOpcional'] . '</span>' ?></td>
                             </tr>
                             <tr>
-                                <td><label for="inputPasswordObligatorio">Contraseña obligatoria</label></td>
-                                <td><input class="inputObligatorio" type="password" name="inputPasswordObligatorio" id="inputPasswordObligatorio" value="<?php echo $_REQUEST['inputPasswordObligatorio'] ?? '' ?>"></td>
+                                <td><label class="obligatorio" for="inputPasswordObligatorio">Contraseña obligatoria</label></td>
+                                <td><input type="password" name="inputPasswordObligatorio" id="inputPasswordObligatorio" value="<?php echo $_REQUEST['inputPasswordObligatorio'] ?? '' ?>"></td>
                                 <td><?php echo '<span>' . $aErrores['inputPasswordObligatorio'] . '</span>' ?></td>
                             </tr>
                         </table>
@@ -587,9 +521,9 @@
                                  * no lo hace.
                                  */
                                 ?>
-                                <td><label for="inputListaDesplegableObligatorio">Lista desplegable obligatoria</label></td>
+                                <td><label class="obligatorio" for="inputListaDesplegableObligatorio">Lista desplegable obligatoria</label></td>
                                 <td>
-                                    <select class="inputObligatorio" name="inputListaDesplegableObligatorio" id="inputListaDesplegableObligatorio">
+                                    <select name="inputListaDesplegableObligatorio" id="inputListaDesplegableObligatorio">
                                         <option value=""></option>
                                         <optgroup label="Grupo de opciones">
                                             <option value="opcion1" <?php echo (isset($_REQUEST['inputListaDesplegableObligatorio']) ? ($_REQUEST['inputListaDesplegableObligatorio'] == 'opcion1' ? 'selected' : '') : '') ?>>Opción 1</option>
@@ -621,8 +555,8 @@
                                  * y si la hay, comprueba si corresponde, y si lo hace, pone el input en checked.
                                  */
                                 ?>
-                                <td>Input radio obligatorio</td>
-                                <td class="inputObligatorio">
+                                <td class="obligatorio">Input radio obligatorio</td>
+                                <td>
                                     <input type="radio" id="inputRadioObligatorioOpcion1" name="inputRadioObligatorio" value="inputRadioObligatorioOpcion1" <?php
                                     echo isset($_REQUEST['inputRadioObligatorio'])?($_REQUEST['inputRadioObligatorio'] == 'inputRadioObligatorioOpcion1' ? 'checked' : ''):''; ?>>
                                     <label for="inputRadioObligatorioOpcion1">Opción 1</label>
@@ -655,10 +589,10 @@
                                  */
                                 ?>
                                 <td>Input checkbox obligatorio</td>
-                                <td class="inputObligatorio">
+                                <td>
                                     <input type="checkbox" id="inputCheckboxObligatorio" name="inputCheckboxObligatorio" value="checkboxObligatorio" <?php
                                     echo isset($_REQUEST['inputCheckboxObligatorio'])?($_REQUEST['inputCheckboxObligatorio']!=''?'checked':''):''; ?>>
-                                    <label for="inputCheckboxObligatorio">Opción</label>
+                                    <label class="obligatorio" for="inputCheckboxObligatorio">Opción</label>
                                 </td>
                                 <td><?php echo '<span>' . $aErrores['inputCheckboxObligatorio'] . '</span>' ?></td>
                             </tr>
@@ -681,8 +615,6 @@
             }
             ?>
         </main>
-        <footer>
-            <div>Modificado el 30/10/2021 - Mª Isabel Martínez Guerra</div>
-        </footer>
+        <?php include_once './elementoFooter.php'; // Footer ?>
     </body>
 </html>

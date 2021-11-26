@@ -7,158 +7,82 @@ Fecha de creación: 19/10/2021
     <head>
         <meta charset="UTF-8">
         <title>IMG - DWES 3 - 13</title>
-        <style>
-            h1, h2{
-                text-align: center;
-            }
-            table{
-                border-collapse: collapse;
-            }
-            td, th{
-                border: 1px solid gainsboro;
-            }
-        </style>
+        <link href="../webroot/css/commonTema3.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <?php
-        /**
-         * Fecha de creación: 19/10/2021
-         * Fecha de última modificación: 20/10/2021
-         * @version 1.0
-         * 
-         * Función que cuenta el número de visitas a la página desde una fecha
-         */
-        
-        /*
-         * Para poder trabajar con él, el directorio debe tener permisos
-         * de lectura y escritura
-         */
-        $sFile = '../doc/prueba.txt';
-
-        echo '<div>El archivo indicado ';
-
-        /*
-         * Comprobaciones sobre la ruta del fichero dado.
-         */
-        if (file_exists($sFile)) {
-            echo 'existe, ';
-
-            //Comprueba si es un archivo normal:
-            echo '<br>'.(is_file($sFile)?'es':'no es').' un archivo normal';
-            
-            //Comprueba si la dirección introducida es un directorio.
-            echo '<br>'.(is_dir($sFile)?'es':'no es').' un directorio';
-                    
-            //Comprueba si es ejecutable.
-            echo '<br>'. (is_executable($sFile)?'es':'no es').' ejecutable';
-            
-            //Comprueba si es un link.
-            echo '<br>'. (is_link($sFile)?'es':'no es').' un link';
-            
-            //Comprueba si es legible.
-            echo '<br>'. (is_readable($sFile)?'es':'no es').' legible';
-            
-            //Comprueba si se puede escribir sobre él.
-            echo '<br>'. (is_writable($sFile)?'se puede':'no se puede').' escribir en él';
-            
-            //Comprueba si ha sido subido mediante HTTP POST
-            echo '<br>y '. (is_uploaded_file($sFile)?'ha sido':'no ha sido').' subido mediante HTTP POST.';
-            
-        } else {
-            echo 'no existe.';
-        }
-
-        echo '</div>';
-
-
-        //file_exists comprueba si el fichero existe.
-        if (file_exists($sFile)) {
-            echo '<ul>';
-            echo '<li>Basename: ' . basename($sFile) . '</li>';
-            echo '<li>Dirname: ' . dirname($sFile) . '</li>';
-            echo '<li>Filesize: ' . filesize($sFile) . '</li>';
-            echo '<li>Tipo de archivo: ' . filetype($sFile) . '</li>';
-            echo '<li>End of File: ' . (feof($sFile) ? 'final' : 'no final') . '</li>';
-            echo '<li>Último acceso: ' . fileatime($sFile) . '</li>';
-            echo '<li>Último cambio: ' . filectime($sFile) . '</li>';
-            echo '<li>Última modificación: ' . filemtime($sFile) . '</li>';
-            echo '<li>ID Usuario propietario: ' . fileowner($sFile) . '</li>';
-            echo '<li>ID Grupo del archivo: ' . filegroup($sFile) . '</li>';
-            echo '<li>Número de inodo: ' . fileinode($sFile) . '</li>';
-            echo '<li>Permisos del archivo: ' . fileperms($sFile) . '</li>';
-            echo '</ul>';
-
-            echo '<h3>Lectura del archivo mediante file()</h3>';
+        <header>
+            <?php include_once './elementoBtVolver.php'; ?>
+        </header>
+        <main>
+            <?php
             /**
-             * Este no necesita que el fichero esté abierto.
-             * Devuelve un array con cada línea del fichero.
+             * @since 19/10/2021
+             * Fecha de última modificación: 12/11/2021
+             * @version 1.0
+             * 
+             * Función que cuenta el número de visitas a la página desde una fecha
              */
-            $aFileArray = file($sFile);
-            var_dump($aFileArray);
-            print_r($aFileArray);
+            /*
+             * Para poder trabajar con él, el directorio debe tener permisos
+             * de lectura y escritura
+             */
+            $sFile = '../doc/contadorVisitas';
 
-            echo '<h4>Texto: </h4>';
-            foreach ($aFileArray as $sLinea) {
-                echo "<p>$sLinea</p>";
+            /*
+             * Si el fichero existe, lee el número en el contador, suma 1 y lo escribe.
+             */
+            if (file_exists($sFile)) {
+                /*
+                 * Randomizador para que unas veces lo haga con file_get_contents
+                 * y otras con fopen, fread/fwrite y fclose.
+                 */
+                if (/* random_int(0, 1) */1) {
+                    $sMediante = 'fopen, fread/fwrite y fclose';
+
+                    // Apertura del fichero. Devuelve un recurso de puntero.
+                    $gestor = fopen($sFile, 'r+');
+                    fseek($gestor, 0);
+
+                    /*
+                     * fread no funciona
+                     * https://drib.tech/programming/php-file_get_contents-not-working
+                     */
+
+                    // Lectura del fichero. Devuelve un string con la información.
+                    $iVisitas = intval(fread($gestor, filesize($sFile)));
+                    var_dump($iVisitas);
+                    $iVisitas++;
+
+                    // Escritura del archivo.
+                    echo 'Write: ' . fwrite($gestor, $iVisitas);
+
+                    // Cierre del puntero.
+                    fclose($gestor);
+                } else {
+                    $sMediante = 'file_get_contents y file_put_contents';
+                    /**
+                     * file_get_contents funciona como la secuencia
+                     * fopen > fread > fclose
+                     * 
+                     * file_put_contents igual, pero con fwrite.
+                     */
+                    $iVisitas = intval(file_get_contents($sFile));
+                    $iVisitas++;
+                    file_put_contents($sFile, $iVisitas);
+                }
+
+                // basename devuelve el último componente de una ruta.
+                echo "<div>Se ha reescrito el fichero <span>" . basename($sFile) . "</span> con $iVisitas visitas mediante $sMediante.</div>";
             }
-
-            echo '<h3>Lectura del archivo mediante file_get_contents()</h3>';
             /*
-             * Este método no necesita que el fichero esté abierto.
-             * Devuelve un string con el contenido del fichero.
-             */
-            $sFileString = file_get_contents($sFile);
-            var_dump($sFileString);
-
-            echo '<h4>Texto: </h4>';
-            echo "<p>$sFileString</p>";
-
-            echo get_include_path();
-            
-            /*
-             * Escritura del archivo
-             */
-            file_put_contents($sFile, "venga otra línea");
-            
-        } else {
-            echo 'El fichero no existe';
-        }
-
-
-
-
-
-        /*
-         * Filesystem Functions: https://www.w3schools.com/php/php_ref_filesystem.asp
-         * - copy()
-         * - delete()
-         * - fflush()
-         * - fnmatch()
-         * 
-         * - fopen()
-         * - fstat()
-         * - fread()
-         * - fwrite()
-         * - fclose()
-         * - flock()
-         * 
-         * - fseek()
-         * - ftell()
-         * 
-         * - ftruncate()
-         * 
-         * - fgetc()    devuelve caracter de archivo abierto
-         * - fgetcsv()  devuelve linea csv de archivo abierto
-         * - fgets()    devuelve línea de archivo abierto
-         * - fpasstru()
-         * 
-         * - file_put_contents()    fopen + fwrite + fclose
-         * - fputcsv()  formatea una línea como CSV y la escribe en un archivo abierto.
-         * - fputs() == fwrite()
-         * 
-         * ? set_include_path()
-         * 
-         */
-        ?>
+             * Si no existe, crea el fichero con un 1.
+             */ else {
+                file_put_contents($sFile, 1);
+                echo "<div>Se ha creado el fichero <span>" . basename($sFile) . "</span> con 1 visita.</div>";
+            }
+            ?>
+        </main>
+        <?php include_once './elementoFooter.php'; // Footer ?>
+        
     </body>
 </html>

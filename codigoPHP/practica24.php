@@ -7,24 +7,28 @@ Fecha de creación: 22/10/2021
     <head>
         <meta charset="UTF-8">
         <title>IMG - DWES 3 - 24</title>
+        <link href="../webroot/css/commonTema3.css" rel="stylesheet" type="text/css"/>
         <link href="../webroot/css/forms.css" rel="stylesheet" type="text/css"/>
-        <link href="../webroot/css/common.css" rel="stylesheet" type="text/css"/>
-        <link href="../webroot/css/formStyle.css" rel="stylesheet" type="text/css"/>
-        <style>
-            main{
-                margin: 1% 2%;
-            }
-        </style>
     </head>
     <body>
         <header>
+            <?php include_once './elementoBtVolver.php'; ?>
             <h1>Formulario del ejercicio 24</h1>
             <h2>Enviado el formulario con la información correcta, mostrará la información con que se ha rellenado. <br>Mantiene los datos correctos si otros estaban equivocados.</h2>
+            <style>
+                fieldset:first-child table{
+                    margin: auto;
+                    max-width: 400px;
+                }
+                fieldset:first-child table label{
+                    text-align: center;
+                }
+            </style>
         </header>
         <main>
             <?php
             /**
-             * Fecha de creación: 22/10/2021
+             * @since 22/10/2021
              * Fecha de última modificación: 28/10/2021
              * @version 1.0
              * @author Sasha
@@ -214,8 +218,8 @@ Fecha de creación: 22/10/2021
                                 <td><label class="obligatorio" for="password">Contraseña</label></td>
                             </tr>
                             <tr>
-                                <td><input type="text" id="username" name="username" value="<?php echo (isset($_REQUEST['username'])?$_REQUEST['username']:'')  ?>"></td>
-                                <td><input type="password" id="password" name="password" value="<?php echo (isset($_REQUEST['password'])?$_REQUEST['password']:'') ?>"></td>
+                                <td><input class="obligatorio" type="text" id="username" name="username" value="<?php echo (isset($_REQUEST['username'])?$_REQUEST['username']:'')  ?>"></td>
+                                <td><input class="obligatorio" type="password" id="password" name="password" value="<?php echo (isset($_REQUEST['password'])?$_REQUEST['password']:'') ?>"></td>
                             </tr>
                             <tr>
                                 <td><?php echo '<span>' . $aErrores['username'] . '</span>' ?></td>
@@ -232,9 +236,9 @@ Fecha de creación: 22/10/2021
                                 <td><label class="obligatorio" for="height">Fecha de nacimiento</label></td>
                             </tr>
                             <tr>
-                                <td><input type="text" id="name" name="name" value="<?php echo $_REQUEST['name']??'' /*Null coalescing operator*/ ?>"></td>
-                                <td><input type="text" id="dni" name="dni" value="<?php echo $_REQUEST['dni']??'' ?>" placeholder="00000000A"></td>
-                                <td><input type="date" id="birthday" name="birthday" value="<?php echo $_REQUEST['birthday']??'' ?>"></td>
+                                <td><input class="obligatorio" type="text" id="name" name="name" value="<?php echo $_REQUEST['name']??'' /*Null coalescing operator*/ ?>"></td>
+                                <td><input class="obligatorio" type="text" id="dni" name="dni" value="<?php echo $_REQUEST['dni']??'' ?>" placeholder="00000000A"></td>
+                                <td><input class="obligatorio" type="date" id="birthday" name="birthday" value="<?php echo $_REQUEST['birthday']??'' ?>"></td>
                             </tr>
                             <tr>
                                 <td><?php echo '<span>' . $aErrores['name'] . '</span>' ?></td>
@@ -302,7 +306,7 @@ Fecha de creación: 22/10/2021
                                         </li>
                                     </ul>
                                 </td>
-                                <td><input type="text" id="codpostal" name="codpostal" value="<?php echo (isset($_REQUEST['codpostal'])?$_REQUEST['codpostal']:'') ?>" placeholder="00000"></td>
+                                <td><input class="obligatorio" type="text" id="codpostal" name="codpostal" value="<?php echo (isset($_REQUEST['codpostal'])?$_REQUEST['codpostal']:'') ?>" placeholder="00000"></td>
                             </tr>
                             <tr>
                                 <td><?php echo '<span>' . $aErrores['nation'] . '</span>' ?></td>
@@ -315,7 +319,7 @@ Fecha de creación: 22/10/2021
                                 <td></td>
                             </tr>
                             <tr>
-                                <td><input type="number" id="height" name="height" value="<?php echo (isset($_REQUEST['height'])?$_REQUEST['height']:'') ?>" placeholder="cm"></td>
+                                <td><input class="obligatorio" type="number" id="height" name="height" value="<?php echo (isset($_REQUEST['height'])?$_REQUEST['height']:'') ?>" placeholder="cm"></td>
                                 <td></td>
                                 <td></td>
                             </tr>
@@ -368,8 +372,6 @@ Fecha de creación: 22/10/2021
                 }
                 ?>
         </main>
-        <footer>
-            <div>Modificado el 27/10/2021 - Mª Isabel Martínez Guerra</div>
-        </footer>
+        <?php include_once './elementoFooter.php'; // Footer ?>
     </body>
 </html>
