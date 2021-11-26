@@ -475,11 +475,11 @@
                             </tr>
                             <tr>
                                 <td><label class="obligatorio" for="inputUrlObligatorio">Enlace obligatorio</label></td>
-                                <td><input type="url" name="inputUrlObligatorio" id="inputUrlObligatorio" value="<?php echo $_REQUEST['inputUrlObligatorio'] ?? '' ?>" placeholder="http://ejemplo.com"></td>
+                                <td><input class="obligatorio" type="url" name="inputUrlObligatorio" id="inputUrlObligatorio" value="<?php echo $_REQUEST['inputUrlObligatorio'] ?? '' ?>" placeholder="http://ejemplo.com"></td>
                                 <td><?php echo '<span>' . $aErrores['inputUrlObligatorio'] . '</span>' ?></td>
                             </tr>
                             <tr>
-                                <td><label class="obligatorio" for="inputUrlOpcional">Enlace obligatorio</label></td>
+                                <td><label for="inputUrlOpcional">Enlace obligatorio</label></td>
                                 <td><input type="url" name="inputUrlOpcional" id="inputUrlOpcional" value="<?php echo $_REQUEST['inputUrlOpcional'] ?? '' ?>" placeholder="http://ejemplo.com"></td>
                                 <td><?php echo '<span>' . $aErrores['inputUrlOpcional'] . '</span>' ?></td>
                             </tr>
