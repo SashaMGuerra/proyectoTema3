@@ -16,7 +16,7 @@ Fecha de creación: 18/10/2021
         <main>
             <?php
             /**
-             * Fecha de creación: 18/10/2021
+             * @since 18/10/2021
              * Fecha de última modificación: 18/10/2021
              * 
              * Mostrar dirección IP del equipo desde el que se accede.

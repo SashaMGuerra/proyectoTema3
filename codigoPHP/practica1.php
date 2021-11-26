@@ -17,7 +17,7 @@ Fecha de creación:
         <main>
             <?php
             /**
-             * Fecha de creación:
+             * @since
              * Fecha de modificación: 26/10/2021.
              * @author Sasha
              * @version 1.0
@@ -109,7 +109,7 @@ Fecha de creación:
             print_r("<div>La variable " . '$fFlotante' . " tiene un valor de <strong>$fFlotante</strong> y es de tipo " . gettype($fFlotante) . '</div>');
             print_r('<div>La variable $sHilo tiene un valor de "<strong>' . $sHilo . '</strong>" y es de tipo ' . gettype($sHilo) . '</div>');
             //Se puede juntar array y string, pero no muestra el contenido del array.
-            print_r('<div>La variable $aArray, de tipo ' . gettype($aArray) . ' tiene un valor de <strong>' . $aArray . '</strong>:');
+            print_r('<div>La variable $aArray, de tipo ' . gettype($aArray) . ' tiene un valor de:');
             /*
              * Para formatear la salida de print_r con array, se necesita la etiqueta
              * <pre> rodeándolo
@@ -124,16 +124,16 @@ Fecha de creación:
              */
             echo '<div>La variante $sHilo es tratada como un string:';
             var_dump($sHilo);
-            echo '</div>';
+            echo '</div></br>';
             echo '<div>$iEntero:';
             var_dump($iEntero);
-            echo '</div>';
+            echo '</div></br>';
             echo '<div>$fFlotante:';
             var_dump($fFlotante);
-            echo '</div>';
+            echo '</div></br>';
             echo '<div>La variable $bBool se muestra directamente como su valor booleano, no integer:';
             var_dump($bBool);
-            echo '</div>';
+            echo '</div></br>';
             echo '<div>Sobre la variable $aArray muestra información también de su contenido:';
             var_dump($aArray);
             echo '</div>';

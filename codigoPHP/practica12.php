@@ -8,6 +8,21 @@ Fecha de creación: 18/10/2021
         <meta charset="UTF-8">
         <title>IMG - DWES 3 - 12</title>
         <link href="../webroot/css/commonTema3.css" rel="stylesheet" type="text/css"/>
+        <style>
+            table{
+                margin: auto;
+                border-collapse: collapse;
+            }
+            tr:first-child th{
+                border: 1px solid black;
+            }
+            tr:nth-child(even) td{
+                background-color: gainsboro;
+            }
+            td{
+                border: 1px solid gainsboro;
+            }
+        </style>
     </head>
     <body>
         <header>
@@ -19,7 +34,7 @@ Fecha de creación: 18/10/2021
              * @author Isabel Mtnez.
              * @version 1.0
              * 
-             * Fecha de creación: 18/10/2021
+             * @since 18/10/2021
              * Fecha de última modificación: 18/10/2021
              * 
              * Mostrado del contenido de las variables superglobales.

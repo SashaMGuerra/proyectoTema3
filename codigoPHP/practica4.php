@@ -17,7 +17,7 @@ Fecha de creación:
         <main>
             <?php
             /**
-             * Fecha de creación:
+             * @since
              * Fecha de modificación: 20/10/2021.
              * 
              * Muestra de la fecha y hora en otros lugares en su idioma.

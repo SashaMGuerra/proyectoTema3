@@ -8,6 +8,18 @@ Fecha de creación: 26/10/2021
         <meta charset="UTF-8">
         <title>IMG - DWES 3 - 18</title>
         <link href="../webroot/css/commonTema3.css" rel="stylesheet" type="text/css"/>
+        <style>
+            table{
+                width: 100%;
+                max-width: max-content;
+                margin: auto;
+                text-align: center;
+                table-layout: fixed;
+            }
+            td{
+                border: 1px solid gainsboro;
+            }
+        </style>
     </head>
     <body>
         <header>
@@ -16,7 +28,7 @@ Fecha de creación: 26/10/2021
         <main>
             <?php
             /**
-             * Fecha de creación: 26/10/2021
+             * @since 26/10/2021
              * Fecha de última modificación: 26/10/2021
              * 
              * Inicialización de un arrray bidimensional con los nombres de personas

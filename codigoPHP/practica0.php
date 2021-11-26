@@ -17,7 +17,7 @@ Fecha de creación:
         <main>
             <?php
             /**
-             * Fecha de creación:
+             * @since
              * Fecha de modificación:
              * @author Sasha
              * @version 1.0

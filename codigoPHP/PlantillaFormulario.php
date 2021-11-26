@@ -56,7 +56,7 @@
         <main>
             <?php
             /**
-             * Fecha de creación: 28/10/2021
+             * @since 28/10/2021
              * Fecha de última modificación: 30/10/2021
              * @version 1.0
              * @author Sasha

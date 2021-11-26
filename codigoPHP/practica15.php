@@ -16,7 +16,7 @@ Fecha de creación: 24/10/2021
         <main>
             <?php
             /**
-             * Fecha de creación: 24/10/2021
+             * @since 24/10/2021
              * Fecha de última modificación: 24/10/2021
              * 
              * Inicialización y recorrido de un array con el sueldo de cada

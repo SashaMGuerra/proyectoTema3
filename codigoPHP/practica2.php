@@ -17,7 +17,7 @@ Fecha de creación:
         <main>
             <?php
             /**
-             * Fecha de creación:
+             * @since
              * Fecha de modificación: 18/10/2021.
              * 
              * Uso de la variable heredoc.

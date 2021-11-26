@@ -16,7 +16,7 @@ Fecha de creación: 18/10/2021
         <main>
             <?php
             /**
-             * Fecha de creación: 18/10/2021.
+             * @since 18/10/2021.
              * Fecha de última modificación: 22/10/2021.
              * @author Sasha
              * @version 1.0

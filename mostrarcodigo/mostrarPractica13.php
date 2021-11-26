@@ -11,7 +11,7 @@ Fecha de creación: 19/10/2021
     <body>
         <?php
         /**
-         * Fecha de creación: 19/10/2021
+         * @since 19/10/2021
          * Fecha de modificación: 19/10/2021
          */
             highlight_file("../codigoPHP/practica13.php");

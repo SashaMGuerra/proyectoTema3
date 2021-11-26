@@ -17,7 +17,7 @@ Fecha de creación:
         <main>
             <?php
             /**
-             * Fecha de creación:
+             * @since
              * Fecha de modificación: 20/10/2021.
              * 
              * Estudio de la clase DateTime.

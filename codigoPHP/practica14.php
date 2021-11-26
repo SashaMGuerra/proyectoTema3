@@ -16,7 +16,7 @@ Fecha de creación: 20/10/2021
         <main>
             <?php
             /**
-             * Fecha de creación: 20/10/2021
+             * @since 20/10/2021
              * Fecha de última modificación: 20/10/2021
              * 
              * Librería de funciones personal: uso.
